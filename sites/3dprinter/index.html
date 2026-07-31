@@ -77,7 +77,7 @@
     window.addEventListener('DOMContentLoaded', () => {
       const header = document.querySelector('header');
       if (header) {
-        header.style.top = '44px';
+        header.style.top = '0';
       }
     });
   </script>
@@ -112,16 +112,21 @@
       .app-card-text { padding: 16px 0 !important; }
       .installations-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
       .download-main-layout { grid-template-columns: 1fr !important; gap: 30px !important; }
-      .catalog-cards-grid { grid-template-columns: 1fr !important; gap: 16px !important; padding: 20px !important; }
+      .catalog-cards-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; padding: 20px !important; }
       .customers-list-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
       .contact-main-layout { grid-template-columns: 1fr !important; gap: 30px !important; }
       .history-cards-layout { grid-template-columns: 1fr !important; gap: 16px !important; }
       .software-layout { grid-template-columns: 1fr !important; gap: 24px !important; }
       .workflow-steps-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
       /* 안전망: 목록에 없는 다단 그리드도 모바일에선 1열로 (2열 유지가 필요한 것만 예외) */
-      section [style*="grid-template-columns"]:not(.story-stats-grid):not(.customers-list-grid):not(.workflow-steps-grid) { grid-template-columns: 1fr !important; }
+      section [style*="grid-template-columns"]:not(.story-stats-grid):not(.customers-list-grid):not(.workflow-steps-grid):not(.catalog-cards-grid) { grid-template-columns: 1fr !important; }
       /* 자식이 내용 때문에 칸보다 넓어져 삐져나가는 것 방지 (min-width:auto → 0, 중첩까지) */
       section * { min-width: 0 !important; }
+      /* 예외: 마퀴는 min-width:0 시 width:max-content가 0으로 붕괴하므로 복원 */
+      .hero-marquee, .hero-marquee * { min-width: auto !important; }
+      /* 협력기관 로고 스트립(초광폭 이미지): 읽을 수 있는 높이로 키우고 가로 스크롤 */
+      .partner-logo-box { overflow-x: auto !important; justify-content: flex-start !important; padding-left: 14px !important; padding-right: 14px !important; }
+      .partner-logo-img { width: auto !important; height: 34px !important; max-width: none !important; max-height: none !important; }
       /* 가로로 나열된 배지/태그가 안 접히면 줄바꿈 */
       section [style*="display:flex"][style*="wrap"], section [style*="display:flex"][style*="gap"] { flex-wrap: wrap !important; }
       /* 카드 안쪽 좌우 여백이 큰 것 모바일에서 축소 (44/32/28px → 20px) */
@@ -144,7 +149,7 @@
       .spec-modal-box { width: 92% !important; max-height: 85% !important; padding: 24px !important; }
       
       /* Hide the empty right side of hero on mobile */
-      #heroSection > div > div > div:last-child { display: none !important; }
+      #heroSection > div > div > div:last-child:not(.hero-marquee) { display: none !important; }
     }
     
     .mobile-preview-active header { position: absolute !important; top: 0 !important; height: 64px !important; }
@@ -166,14 +171,17 @@
     .mobile-preview-active .app-card-text { padding: 16px 0 !important; }
     .mobile-preview-active .installations-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
     .mobile-preview-active .download-main-layout { grid-template-columns: 1fr !important; gap: 30px !important; }
-    .mobile-preview-active .catalog-cards-grid { grid-template-columns: 1fr !important; gap: 16px !important; padding: 20px !important; }
+    .mobile-preview-active .catalog-cards-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; padding: 20px !important; }
     .mobile-preview-active .customers-list-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
     .mobile-preview-active .contact-main-layout { grid-template-columns: 1fr !important; gap: 30px !important; }
     .mobile-preview-active .history-cards-layout { grid-template-columns: 1fr !important; gap: 16px !important; }
     .mobile-preview-active .software-layout { grid-template-columns: 1fr !important; gap: 24px !important; }
     .mobile-preview-active .workflow-steps-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
-    .mobile-preview-active section [style*="grid-template-columns"]:not(.story-stats-grid):not(.customers-list-grid):not(.workflow-steps-grid) { grid-template-columns: 1fr !important; }
+    .mobile-preview-active section [style*="grid-template-columns"]:not(.story-stats-grid):not(.customers-list-grid):not(.workflow-steps-grid):not(.catalog-cards-grid) { grid-template-columns: 1fr !important; }
     .mobile-preview-active section * { min-width: 0 !important; }
+    .mobile-preview-active .hero-marquee, .mobile-preview-active .hero-marquee * { min-width: auto !important; }
+    .mobile-preview-active .partner-logo-box { overflow-x: auto !important; justify-content: flex-start !important; padding-left: 14px !important; padding-right: 14px !important; }
+    .mobile-preview-active .partner-logo-img { width: auto !important; height: 34px !important; max-width: none !important; max-height: none !important; }
     .mobile-preview-active section [style*="display:flex"][style*="wrap"], .mobile-preview-active section [style*="display:flex"][style*="gap"] { flex-wrap: wrap !important; }
     .mobile-preview-active section [style*="padding:44px"], .mobile-preview-active section [style*="padding: 44px"], .mobile-preview-active section [style*="padding:32px"], .mobile-preview-active section [style*="padding: 32px"], .mobile-preview-active section [style*="padding:16px 28px"], .mobile-preview-active section [style*="padding: 16px 28px"] { padding-left: 20px !important; padding-right: 20px !important; }
     .mobile-preview-active section [style*="white-space:nowrap"], .mobile-preview-active section [style*="white-space: nowrap"] { white-space: normal !important; }
@@ -188,18 +196,10 @@
     .mobile-preview-active .contact-phone { font-size: clamp(23px, 6.5vw, 32px) !important; white-space: nowrap !important; }
     .mobile-preview-active .hero-links { flex-direction: column !important; align-items: stretch !important; }
     .mobile-preview-active .spec-modal-box { width: 92% !important; max-height: 85% !important; padding: 24px !important; }
-    .mobile-preview-active #heroSection > div > div > div:last-child { display: none !important; }
+    .mobile-preview-active #heroSection > div > div > div:last-child:not(.hero-marquee) { display: none !important; }
   </style>
 </head>
 <body>
-<!-- PREVIEW TOOLBAR -->
-<div id="preview-toolbar" style="position:fixed;top:0;left:0;right:0;height:44px;background:#0f172a;color:#fff;display:flex;align-items:center;justify-content:center;gap:12px;z-index:99999;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;border-bottom:1px solid #1e293b;box-shadow:0 4px 12px rgba(0,0,0,0.15);">
-  <span style="color:#94a3b8;font-weight:600;letter-spacing:0.05em;display:flex;align-items:center;gap:6px;">🧪 화면 검토: <span id="view-mode-tag" style="background:#3b82f6;color:#fff;padding:2px 6px;border-radius:3px;font-size:10px;">PC 화면</span></span>
-  <div style="width:1px;height:16px;background:#334155;"></div>
-  <button type="button" onclick="setPreviewDevice('pc')" id="btn-pc" style="padding:6px 14px;border-radius:4px;background:#2563eb;color:#fff;font-weight:700;border:none;cursor:pointer;transition:all 0.2s;">🖥️ PC 화면</button>
-  <button type="button" onclick="setPreviewDevice('mobile')" id="btn-mobile" style="padding:6px 14px;border-radius:4px;background:#334155;color:#cbd5e1;font-weight:700;border:none;cursor:pointer;transition:all 0.2s;">📱 모바일 화면</button>
-</div>
-<div id="preview-spacer" style="height:44px;"></div>
 
 <div id="preview-root" style="width:100%;transition:all 0.3s ease;">
 <x-dc>
@@ -327,7 +327,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;}
 
     <div style="position:relative;z-index:1;margin-top:60px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12);overflow:hidden;">
       <div style="font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:800;letter-spacing:.08em;color:#a3d4ff;margin-bottom:18px;text-transform:uppercase;">주요 고객사</div>
-      <div style="display:flex;align-items:center;width:max-content;animation:marqueeScroll 38s linear infinite;">
+      <div class="hero-marquee" style="display:flex;align-items:center;width:max-content;animation:marqueeScroll 38s linear infinite;">
         <!-- Group 1 -->
         <div style="display:flex;align-items:center;">
           <sc-for list="{{ heroPartners }}" as="c" hint-placeholder-count="13">
@@ -581,7 +581,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;}
             </div>
             
             <p style="font-size:12px;letter-spacing:-.02em;color:#103d7c;margin-top:14px;font-family:'Noto Sans KR',sans-serif;line-height:1.6;font-weight:600;">
-              ※ HD현대삼호중공업 8223호선(HMM GREEN)에 실제 탑재 및 해상 조형 실증 완료 (상대밀도 99.8%, 인장강도 566/580 MPa 확보)
+              ※ HD현대삼호중공업 8223호선(HMM GREEN)에 실제 탑재 및 해상 조형 실증 완료 (물성치 확보)
             </p>
           </div>
 
@@ -629,8 +629,8 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;}
         <!-- Bottom: Logos in 1 row -->
         <div style="border-top:1px solid #cfdfef;padding-top:28px;">
           <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:#1a365d;font-weight:700;margin-bottom:18px;text-align:center;">공동연구개발 및 실증 협력 기관</div>
-          <div style="background:#fff;border-radius:8px;padding:12px 32px;display:flex;justify-content:center;align-items:center;box-shadow:0 4px 16px rgba(0,0,0,.08);margin:0 auto;max-width:1080px;">
-            <img src="images/container/vessel-logo.png" alt="공동연구개발 및 실증 협력 기관" style="width:100%;height:auto;max-height:48px;object-fit:contain;mix-blend-mode:multiply;display:block;">
+          <div class="partner-logo-box" style="background:#fff;border-radius:8px;padding:12px 32px;display:flex;justify-content:center;align-items:center;box-shadow:0 4px 16px rgba(0,0,0,.08);margin:0 auto;max-width:1080px;">
+            <img class="partner-logo-img" src="images/container/vessel-logo.png" alt="공동연구개발 및 실증 협력 기관" style="width:100%;height:auto;max-height:48px;object-fit:contain;mix-blend-mode:multiply;display:block;">
           </div>
         </div>
       </div>
@@ -664,7 +664,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;}
 
     <div style="margin-top:28px;background:#fff;border:1px solid #bbdefb;border-radius:10px;overflow:hidden;">
       <div style="padding:16px 28px;background:#0d47a1;color:#fff;">
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;font-style:italic;">AnyX-M Series 분말 관리 &amp; 취급 시스템</h3>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;font-style:italic;">AnyX-M Series<br>분말 관리 &amp; 취급 시스템</h3>
         <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#a3d4ff;letter-spacing:.06em;margin-top:4px;">POWDER HANDLING · 전 모델 공통 적용</div>
       </div>
       <div class="story-stats-grid" style="display:grid;grid-template-columns:repeat(4,1fr);">
