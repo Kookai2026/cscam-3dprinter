@@ -8,7 +8,9 @@ APP_CSCAM/
 │
 ├── README.md              프로젝트 소개 (제일 먼저 읽는 파일)
 ├── FOLDER_MAP.md          📍 지금 이 파일 — 폴더 지도
+├── index.html             🔗 첫 접속 시 3dprinter/index.html로 자동 연결해 주는 리다이렉션 파일
 ├── .gitignore            git이 무시할 파일 목록 (임시파일 등)
+
 │
 ├── docs/                 📄 프로젝트 문서 보관
 │   └── 수정내역_v16.md      과거 수정 이력
