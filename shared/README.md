@@ -13,4 +13,4 @@
 **Phase 1**에서 3D프린터 사이트의 헤더·푸터·색·부품을 여기로 뽑아내면,
 CNC·기계 사이트가 이걸 그대로 가져다 쓰게 됩니다.
 
-→ 배경: vault `_vault/20_Projects/CSCAM/홈페이지_교육/03_전체구조와_로드맵.md`
+→ 배경: vault `_vault/20_Projects/CSCAM/홈페이지/03_전체구조와_로드맵.md`

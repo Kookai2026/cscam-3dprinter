@@ -6,3 +6,6 @@ Thumbs.db
 
 # 개발 도구
 node_modules/
+
+# 교육 문서는 vault에만 보관 (공개 배포 제외)
+_STUDY/

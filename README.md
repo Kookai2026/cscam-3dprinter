@@ -27,4 +27,4 @@ APP_CSCAM/
 
 ## 교육/작업 기록
 전체 배경·용어·결정·작업일지는 옵시디언 vault에 있습니다:
-`_vault/20_Projects/CSCAM/홈페이지_교육/`
+`_vault/20_Projects/CSCAM/홈페이지/`

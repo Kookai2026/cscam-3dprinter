@@ -56,4 +56,4 @@ APP_CSCAM/
 | `sites/cnc/` | `cnc.cscam.co.kr` |
 | `sites/machine/` | `machine.cscam.co.kr` |
 
-> 📚 자세한 배경·용어·결정은 vault: `_vault/20_Projects/CSCAM/홈페이지_교육/`
+> 📚 자세한 배경·용어·결정은 vault: `_vault/20_Projects/CSCAM/홈페이지/`
