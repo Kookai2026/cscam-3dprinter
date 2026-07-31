@@ -1,0 +1,8 @@
+# OS / 임시 파일
+Thumbs.db
+.thumbnail
+.DS_Store
+*.zip
+
+# 개발 도구
+node_modules/
