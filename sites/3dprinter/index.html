@@ -118,6 +118,18 @@
       .history-cards-layout { grid-template-columns: 1fr !important; gap: 16px !important; }
       .software-layout { grid-template-columns: 1fr !important; gap: 24px !important; }
       .workflow-steps-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+      /* 안전망: 목록에 없는 다단 그리드도 모바일에선 1열로 (2열 유지가 필요한 것만 예외) */
+      section [style*="grid-template-columns"]:not(.story-stats-grid):not(.customers-list-grid):not(.workflow-steps-grid) { grid-template-columns: 1fr !important; }
+      /* 자식이 내용 때문에 칸보다 넓어져 삐져나가는 것 방지 (min-width:auto → 0, 중첩까지) */
+      section * { min-width: 0 !important; }
+      /* 가로로 나열된 배지/태그가 안 접히면 줄바꿈 */
+      section [style*="display:flex"][style*="wrap"], section [style*="display:flex"][style*="gap"] { flex-wrap: wrap !important; }
+      /* 카드 안쪽 좌우 여백이 큰 것 모바일에서 축소 (44/32/28px → 20px) */
+      section [style*="padding:44px"], section [style*="padding: 44px"], section [style*="padding:32px"], section [style*="padding: 32px"], section [style*="padding:16px 28px"], section [style*="padding: 16px 28px"] { padding-left: 20px !important; padding-right: 20px !important; }
+      /* nowrap 때문에 안 접히는 텍스트 라벨 줄바꿈 허용 */
+      section [style*="white-space:nowrap"], section [style*="white-space: nowrap"] { white-space: normal !important; }
+      /* 큰 간격(24px+)의 가로 flex 레이아웃은 모바일에서 세로로 쌓기 (작은 gap 아이콘+텍스트는 유지) */
+      section [style*="gap: 24px"], section [style*="gap:24px"], section [style*="gap: 28px"], section [style*="gap:28px"], section [style*="gap: 32px"], section [style*="gap:32px"], section [style*="gap: 40px"], section [style*="gap:40px"], section [style*="gap: 44px"], section [style*="gap:44px"], section [style*="gap: 60px"], section [style*="gap:60px"] { flex-direction: column !important; align-items: stretch !important; }
 
       /* Typography & elements */
       #heroSection { min-height: auto !important; padding: 40px 16px !important; }
@@ -160,6 +172,12 @@
     .mobile-preview-active .history-cards-layout { grid-template-columns: 1fr !important; gap: 16px !important; }
     .mobile-preview-active .software-layout { grid-template-columns: 1fr !important; gap: 24px !important; }
     .mobile-preview-active .workflow-steps-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+    .mobile-preview-active section [style*="grid-template-columns"]:not(.story-stats-grid):not(.customers-list-grid):not(.workflow-steps-grid) { grid-template-columns: 1fr !important; }
+    .mobile-preview-active section * { min-width: 0 !important; }
+    .mobile-preview-active section [style*="display:flex"][style*="wrap"], .mobile-preview-active section [style*="display:flex"][style*="gap"] { flex-wrap: wrap !important; }
+    .mobile-preview-active section [style*="padding:44px"], .mobile-preview-active section [style*="padding: 44px"], .mobile-preview-active section [style*="padding:32px"], .mobile-preview-active section [style*="padding: 32px"], .mobile-preview-active section [style*="padding:16px 28px"], .mobile-preview-active section [style*="padding: 16px 28px"] { padding-left: 20px !important; padding-right: 20px !important; }
+    .mobile-preview-active section [style*="white-space:nowrap"], .mobile-preview-active section [style*="white-space: nowrap"] { white-space: normal !important; }
+    .mobile-preview-active section [style*="gap: 24px"], .mobile-preview-active section [style*="gap:24px"], .mobile-preview-active section [style*="gap: 28px"], .mobile-preview-active section [style*="gap:28px"], .mobile-preview-active section [style*="gap: 32px"], .mobile-preview-active section [style*="gap:32px"], .mobile-preview-active section [style*="gap: 40px"], .mobile-preview-active section [style*="gap:40px"], .mobile-preview-active section [style*="gap: 44px"], .mobile-preview-active section [style*="gap:44px"], .mobile-preview-active section [style*="gap: 60px"], .mobile-preview-active section [style*="gap:60px"] { flex-direction: column !important; align-items: stretch !important; }
     
     .mobile-preview-active #heroSection { min-height: auto !important; padding: 40px 16px !important; }
     .mobile-preview-active #heroSection > div { padding: 30px 0 !important; text-align: center !important; }
