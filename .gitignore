@@ -18,3 +18,6 @@ inbox/
 *.md
 docs/
 
+# 검토용 미리보기 페이지는 로컬 전용 (고객 사이트 아님 → MobileView 도구 사용)
+mobile-preview.html
+
