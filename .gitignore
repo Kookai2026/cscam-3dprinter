@@ -13,3 +13,8 @@ _STUDY/
 # 미가공 외부 자료 보관용 인박스 폴더 (공개 배포 제외)
 inbox/
 
+# 내부 문서(.md)는 repo에서 제외 — repo에는 웹사이트 파일(HTML/CSS/JS/이미지)만 둔다.
+# (CLAUDE.md, 수정내역, README, DESIGN, 작업로그, 협업가이드 등은 로컬 전용)
+*.md
+docs/
+
