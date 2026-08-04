@@ -1,0 +1,56 @@
+/* shared/css/variables.css - CSCAM 글로벌 디자인 시스템 변수 (Design Tokens) */
+
+:root {
+  /* ==========================================================================
+     글로벌 공통 변수 (Typography, Layout, Colors)
+     ========================================================================== */
+  --font-title: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Noto Sans KR', 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --bg-light: #fafbfc;
+  --border-color: #e2e6ec;
+  --text-main: #212121;
+  --text-muted: #757575;
+  --white: #ffffff;
+}
+
+/* ==========================================================================
+   사업부별 독립 테마 변수 (Color Palettes)
+   ========================================================================== */
+
+/* 1. 3D 프린터 사업부 테마 (Blue & Orange) */
+.theme-3dprinter {
+  --brand-main: #1e5aa8;
+  --brand-accent: #2196f3;
+  --brand-hover: #0d47a1;
+  --hero-bg: #0d1e3d;
+  --point-sla: #ffb703;
+}
+
+/* 2. CNC 사업부 테마 (진한 네이비 & 블루) */
+.theme-cnc {
+  --brand-main: #0d1e3d;
+  --brand-accent: #4a9eff;
+  --brand-hover: #1e5aa8;
+  --hero-bg: #071124;
+}
+
+/* 3. 기계 사업부 테마 (다크 슬레이트 & 스틸 블루) */
+.theme-machine {
+  --brand-main: #2a3b5c;
+  --brand-accent: #5c7fa8;
+  --brand-hover: #1b2840;
+  --hero-bg: #121c2e;
+}
+
+/* 4. 문자마킹기 사업부 테마 (ET574 Green)
+   - 스펙: ET574 - 2.5G 6.5/8 (GREEN)
+   - 컬러: RGB (0, 195, 87) / HEX #00C357
+   ========================================================================== */
+.theme-marking {
+  --brand-main: #00C357;     /* 메인 브랜드 그린 */
+  --brand-accent: #00e567;   /* 호버 및 액센트 컬러 */
+  --brand-hover: #00a047;    /* 액티브 및 진한 그린 */
+  --hero-bg: #0b1528;        /* 다크 배경 */
+}
