@@ -74,6 +74,16 @@
       }
     }
     
+    function scrollToTop() {
+      const root = document.getElementById('preview-root');
+      if (root) {
+        root.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+      document.body.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
     window.addEventListener('DOMContentLoaded', () => {
       const header = document.querySelector('header');
       if (header) {
@@ -200,7 +210,7 @@
     .mobile-preview-active #heroSection > div > div > div:last-child:not(.hero-marquee) { display: none !important; }
     /* Family Bar (CSCAM 사업부 전환) */
     .family-bar{background:#05080d;border-bottom:1px solid rgba(255,255,255,.06);}
-    .family-bar-inner{max-width:1320px;margin:0 auto;padding:0 24px;height:32px;display:flex;align-items:center;justify-content:flex-end;gap:2px;overflow-x:auto;scrollbar-width:none;}
+    .family-bar-inner{max-width:1320px;margin:0 auto;padding:0 32px;height:32px;display:flex;align-items:center;justify-content:flex-end;gap:2px;overflow-x:auto;scrollbar-width:none;}
     .family-bar-inner::-webkit-scrollbar{display:none;}
     .family-bar-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.14em;color:#5b6b85;margin-right:auto;white-space:nowrap;}
     .family-bar-nav{display:flex;gap:2px;white-space:nowrap;}
@@ -219,11 +229,11 @@
 <meta name="design_doc_mode" content="canvas">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+KR:wght@300;400;500;700;900&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+KR:wght@300;400;500;700;900&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <script src="./js/image-slot.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;scrollbar-gutter:stable;}
 body{font-family:'Inter','Noto Sans KR',system-ui,sans-serif;color:#212121;background:#fff;-webkit-font-smoothing:antialiased;line-height:1.55;}
 img{display:block;max-width:100%;}
 a{color:#1e5aa8;text-decoration:none;}
@@ -246,32 +256,32 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;}
 <header style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid #e2e6ec;">
   <div class="family-bar">
     <div class="family-bar-inner">
-      <span class="family-bar-label">CSCAM GROUP</span>
+      <span class="family-bar-label">CSCAM 기계사업부</span>
       <nav class="family-bar-nav">
         <a href="#biz-intro" class="active">3D PRINTER</a>
-        <a href="../machine/engraving/index.html">LASER TEXTURING</a>
-        <a href="../machine/marking/index.html">MARKING MACHINE</a>
+        <a href="https://kookai2026.github.io/cscam-engraving/">LASER TEXTURING</a>
+        <a href="https://kookai2026.github.io/cscam-marking/" data-pending-verify="true">MARKING MACHINE</a>
         <span class="disabled">ETC</span>
       </nav>
     </div>
   </div>
-  <div id="mobile-menu-drawer" style="position:fixed;top:111px;left:0;right:0;bottom:0;background:#fff;z-index:99;transform:translateX(100%);transition:all 0.3s ease;display:flex;flex-direction:column;padding:30px;gap:24px;border-top:1px solid #e2e6ec;">
+  <div id="mobile-menu-drawer" style="position:fixed;top:101px;left:0;right:0;bottom:0;background:#fff;z-index:99;transform:translateX(100%);transition:all 0.3s ease;display:flex;flex-direction:column;padding:30px;gap:24px;border-top:1px solid #e2e6ec;">
     <!-- Family Site Switcher for Mobile Drawer -->
     <div style="display:flex;flex-wrap:wrap;gap:6px;padding-bottom:20px;margin-bottom:10px;border-bottom:1px solid #e2e6ec;font-size:10.5px;font-weight:700;font-family:'Space Grotesk',sans-serif;">
       <a href="#biz-intro" onclick="toggleMobileMenu()" style="padding:5px 12px;border-radius:12px;color:#fff;background:#1e5aa8;">3D PRINTER</a>
-      <a href="../machine/engraving/index.html" style="padding:5px 12px;border-radius:12px;color:#64748b;background:#f1f5f9;border:1px solid #cbd5e1;">LASER TEXTURING</a>
-      <a href="../machine/marking/index.html" style="padding:5px 12px;border-radius:12px;color:#64748b;background:#f1f5f9;border:1px solid #cbd5e1;">MARKING MACHINE</a>
+      <a href="https://kookai2026.github.io/cscam-engraving/" style="padding:5px 12px;border-radius:12px;color:#64748b;background:#f1f5f9;border:1px solid #cbd5e1;">LASER TEXTURING</a>
+      <a href="https://kookai2026.github.io/cscam-marking/" data-pending-verify="true" style="padding:5px 12px;border-radius:12px;color:#64748b;background:#f1f5f9;border:1px solid #cbd5e1;">MARKING MACHINE</a>
       <span style="padding:5px 12px;border-radius:12px;color:#cbd5e1;">ETC</span>
     </div>
     <a href="#biz-intro" onclick="toggleMobileMenu()" style="font-size:18px;font-weight:700;color:#212121;">사업 소개</a>
     <a href="#slm" onclick="toggleMobileMenu()" style="font-size:18px;font-weight:700;color:#212121;">SLM 3DP</a>
     <a href="#sla" onclick="toggleMobileMenu()" style="font-size:18px;font-weight:700;color:#212121;">SLA 3DP</a>
-    <a href="#software" onclick="toggleMobileMenu()" style="font-size:18px;font-weight:700;color:#212121;">Software</a>
-    <a href="#customers" onclick="toggleMobileMenu()" style="font-size:18px;font-weight:700;color:#212121;">고객사</a>
-    <a href="#contact" onclick="toggleMobileMenu()" style="font-size:18px;font-weight:700;color:#212121;">Contact</a>
+    <a href="#software" onclick="toggleMobileMenu()" style="font-size:18px;font-weight:700;color:#212121;">소프트웨어</a>
+    <a href="#customers" onclick="toggleMobileMenu()" style="font-size:18px;font-weight:700;color:#212121;">주요고객</a>
+    <a href="#contact" onclick="toggleMobileMenu()" style="font-size:18px;font-weight:700;color:#212121;">문의하기</a>
   </div>
   
-  <div style="max-width:1320px;margin:0 auto;padding:0 32px;height:78px;display:flex;align-items:center;justify-content:space-between;">
+  <div style="max-width:1320px;margin:0 auto;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;">
     <div style="display:flex;align-items:center;gap:24px;">
       <div>
         <small style="display:block;font-size:10px;color:#757575;letter-spacing:.04em;margin-bottom:2px;font-weight:500;">씨에스캠주식회사</small>
@@ -283,9 +293,9 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;}
         <li><a href="#biz-intro" style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">사업 소개</a></li>
         <li><a href="#slm" style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">SLM 3DP</a></li>
         <li><a href="#sla" style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">SLA 3DP</a></li>
-        <li><a href="#software" style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">Software</a></li>
-        <li><a href="#customers" style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">고객사</a></li>
-        <li><a href="#contact" style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">Contact</a></li>
+        <li><a href="#software" style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">소프트웨어</a></li>
+        <li><a href="#customers" style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">주요고객</a></li>
+        <li><a href="#contact" style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">문의하기</a></li>
       </ul>
     </nav>
     <!-- MOBILE HAMBURGER BUTTON -->
@@ -303,7 +313,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;}
     </div>
   </div>
 </header>
-<div style="height:111px;width:100%;"></div>
+<div style="height:101px;width:100%;"></div>
 
 <!-- HERO -->
 <section id="heroSection" style="position:relative;background:#0d1e3d;color:#fff;overflow:hidden;min-height:88vh;display:flex;align-items:center;">
@@ -803,6 +813,29 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;}
   </div>
 </section>
 
+<!-- ============== 03 SLA (self-contained) ============== -->
+<section id="sla" style="padding:100px 0;background:#fafbfc;border-top:1px solid #e2e6ec;border-bottom:1px solid #e2e6ec;">
+  <div style="max-width:1320px;margin:0 auto;padding:0 32px;" data-reveal="1">
+    <div style="margin-bottom:32px;">
+      <span style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;padding:6px 14px;border-radius:4px;background:#fdf2e9;color:#b5540b;font-weight:700;margin-bottom:18px;">03 · SLA · STEREOLITHOGRAPHY</span>
+      <div style="display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#b5540b;margin-bottom:12px;">
+        <span style="width:24px;height:1px;background:#b5540b;"></span>03 / SLA — 라인업 소개
+      </div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3.4vw,42px);line-height:1.15;letter-spacing:-.02em;color:#212121;margin-bottom:20px;">
+        AnyX-S Series<br>SLA 광경화 3D 프린터
+      </h2>
+    </div>
+    
+    <!-- Placeholder Box -->
+    <div style="background:#fff;border:1px dashed #cbd5e1;border-radius:12px;padding:48px 32px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,0.02);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:260px;">
+      <div style="width:48px;height:48px;border-radius:50%;background:#fdf2e9;color:#b5540b;display:grid;place-items:center;margin-bottom:20px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+      </div>
+      <h4 style="font-size:18px;font-weight:700;color:#212121;margin-bottom:0;">[ AnyX-S Series ] 데이터 준비 및 업데이트 대기 중</h4>
+    </div>
+  </div>
+</section>
+
 <!-- 04 SOFTWARE -->
 <section id="software" style="padding:110px 0;background:#fafbfc;">
   <div style="max-width:1320px;margin:0 auto;padding:0 32px;" data-reveal="1">
@@ -1062,50 +1095,9 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;}
   </div>
 </section>
 
-<!-- BACK TO TOP BUTTON -->
-<button type="button" onClick="window.scrollTo({ top: 0, behavior: 'smooth' })" style="position:fixed;right:36px;bottom:104px;z-index:190;width:44px;height:44px;border-radius:50%;background:#fff;color:#1e5aa8;border:1px solid #e2e6ec;display:grid;place-items:center;box-shadow:0 4px 16px rgba(0,0,0,.12);cursor:pointer;transition:all .3s ease;" style-hover="background:#eaf3fc;transform:translateY(-3px);">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-</button>
 
-<!-- CHATBOT WIDGET (정적 UI) -->
-<button onClick="{{ toggleChat }}" style="position:fixed;right:28px;bottom:28px;z-index:200;width:60px;height:60px;border-radius:50%;background:#1e5aa8;color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(13,71,161,.35);">
-  <span style="position:absolute;top:-4px;right:-4px;width:18px;height:18px;border-radius:50%;background:#2196f3;color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center;border:2px solid #fff;">1</span>
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-</button>
 
-<sc-if value="{{ chatOpen }}" hint-placeholder-val="{{ false }}">
-  <div style="position:fixed;right:28px;bottom:100px;z-index:200;width:340px;max-width:calc(100vw - 40px);height:460px;max-height:calc(100vh - 160px);background:#fff;border:1px solid #e2e6ec;border-radius:12px;box-shadow:0 16px 40px rgba(13,71,161,.15);display:flex;flex-direction:column;overflow:hidden;">
-    <div style="background:#1e5aa8;color:#fff;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;">
-      <div style="display:flex;align-items:center;gap:10px;">
-        <div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.16);display:grid;place-items:center;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-        </div>
-        <div>
-          <h5 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;">CSCAM 문의하기</h5>
-          <span style="display:block;font-size:10px;color:#a3d4ff;font-family:'JetBrains Mono',monospace;letter-spacing:.06em;margin-top:2px;">3D PRINTER 상담 챗봇</span>
-        </div>
-      </div>
-      <div onClick="{{ toggleChat }}" style="width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:#fff;">✕</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;padding:18px;background:#fafbfc;display:flex;flex-direction:column;gap:12px;">
-      <div style="max-width:85%;padding:10px 14px;border-radius:10px;font-size:13px;line-height:1.55;background:#fff;border:1px solid #e2e6ec;color:#424242;">
-        안녕하세요! 씨에스캠 3D 프린터 상담 챗봇입니다.<br>아래 항목을 선택하거나 궁금하신 점을 입력해주세요.
-        <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px;">
-          <button type="button" style="text-align:left;font-size:12px;padding:9px 12px;border:1px solid #bbdefb;background:#eaf3fc;color:#1e5aa8;border-radius:6px;">AnyX-M Series(SLM) 스펙이 궁금해요</button>
-          <button type="button" style="text-align:left;font-size:12px;padding:9px 12px;border:1px solid #bbdefb;background:#eaf3fc;color:#1e5aa8;border-radius:6px;">AnyX-S Series 문의</button>
-          <button type="button" style="text-align:left;font-size:12px;padding:9px 12px;border:1px solid #bbdefb;background:#eaf3fc;color:#1e5aa8;border-radius:6px;">담당자 연결 (062-946-1900)</button>
-        </div>
-      </div>
-    </div>
-    <div style="padding:12px 14px;border-top:1px solid #e2e6ec;background:#fff;display:flex;gap:8px;">
-      <input type="text" placeholder="메시지를 입력하세요 (준비 중)" disabled="" style="flex:1;border:1px solid #e2e6ec;border-radius:20px;padding:10px 16px;font-size:13px;">
-      <div style="width:38px;height:38px;border-radius:50%;background:#1e5aa8;color:#fff;display:grid;place-items:center;flex-shrink:0;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-      </div>
-    </div>
-    <div style="padding:6px 14px 10px;font-size:10px;color:#757575;font-family:'JetBrains Mono',monospace;text-align:center;background:#fff;">POWERED BY CSCAM · AI Q&amp;A LEARNING IN PROGRESS</div>
-  </div>
-</sc-if>
+
 
 </div>
 
@@ -1371,6 +1363,394 @@ class Component extends DCLogic {
   }
 }
 
+</script>
+
+<!-- AI Chatbot Floating Widget (원래의 정적 UI 복원 및 대화식 기능 통합) -->
+<style>
+  @keyframes chatPulse {
+    0% { transform: scale(1); opacity: 0.4; }
+    50% { transform: scale(1.15); opacity: 0; }
+    100% { transform: scale(1); opacity: 0; }
+  }
+  @keyframes dots {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+  .loading-dots span {
+    animation: dots 1.4s infinite;
+  }
+  .chatbot-opt-btn {
+    text-align: left;
+    font-size: 12.5px;
+    padding: 10px 14px;
+    border: 1px solid #bbdefb;
+    background: #eaf3fc;
+    color: #1e5aa8;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    width: 100%;
+    box-shadow: 0 1px 2px rgba(13,71,161,0.05);
+  }
+  .chatbot-opt-btn:hover {
+    background: #dbeaf9;
+    border-color: #90caf9;
+    color: #0d47a1;
+  }
+  .chatbot-opt-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    background: #f1f5f9;
+    border-color: #e2e6ec;
+    color: #94a3b8;
+    box-shadow: none;
+  }
+</style>
+
+<!-- BACK TO TOP BUTTON (컴파일러 외곽으로 이동하여 상시 동작 보장) -->
+<style>
+  .top-btn-3dp {
+    position: fixed;
+    right: 36px;
+    bottom: 104px;
+    z-index: 190;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #fff;
+    color: #1e5aa8;
+    border: 1px solid #e2e6ec;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,.12);
+    cursor: pointer;
+    transition: all .3s ease;
+  }
+  .top-btn-3dp:hover {
+    background: #eaf3fc;
+    transform: translateY(-3px);
+  }
+</style>
+<button type="button" class="top-btn-3dp" onclick="scrollToTop()" aria-label="맨 위로">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+
+<div id="ai-chatbot-widget" style="font-family:'Noto Sans KR',sans-serif;">
+  <!-- Chatbot Floating Button (원래 디자인) -->
+  <button id="chatbot-toggle-btn" type="button" style="position:fixed;right:28px;bottom:28px;z-index:200;width:60px;height:60px;border-radius:50%;background:#1e5aa8;color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(13,71,161,.35);border:none;cursor:pointer;outline:none;">
+    <span id="chatbot-badge" style="position:absolute;top:-4px;right:-4px;width:18px;height:18px;border-radius:50%;background:#2196f3;color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center;border:2px solid #fff;">1</span>
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+  </button>
+
+  <!-- Chat Window Panel (원래 정적 UI 프레임 복원) -->
+  <div id="chatbot-panel" style="position:fixed;right:28px;bottom:100px;z-index:200;width:340px;max-width:calc(100vw - 40px);height:460px;max-height:calc(100vh - 160px);background:#fff;border:1px solid #e2e6ec;border-radius:12px;box-shadow:0 16px 40px rgba(13,71,161,.15);display:none;flex-direction:column;overflow:hidden;transition:all 0.25s ease;transform:translateY(15px);opacity:0;">
+    <!-- Chat Header -->
+    <div style="background:#1e5aa8;color:#fff;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.16);display:grid;place-items:center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+        </div>
+        <div>
+          <h5 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;margin:0;">CSCAM 문의하기</h5>
+          <span style="display:block;font-size:10px;color:#a3d4ff;font-family:'JetBrains Mono',monospace;letter-spacing:.06em;margin-top:2px;">3D PRINTER 상담 챗봇</span>
+        </div>
+      </div>
+      <button id="chatbot-close-btn" type="button" style="width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:#fff;background:none;border:none;cursor:pointer;outline:none;font-size:13px;">✕</button>
+    </div>
+    
+    <!-- Chat Body Messages -->
+    <div id="chatbot-messages" style="flex:1;overflow-y:auto;padding:18px;background:#fafbfc;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth;">
+      <!-- Welcome card and dialog steps will be dynamically inserted here -->
+    </div>
+    
+    <!-- Chat Input Form -->
+    <form id="chatbot-input-form" onsubmit="handleChatbotSubmit(event)" style="padding:12px 14px;border-top:1px solid #e2e6ec;background:#fff;display:flex;gap:8px;margin:0;align-items:center;flex-shrink:0;">
+      <input id="chatbot-input-field" type="text" placeholder="메시지를 입력하세요 (준비 중)" disabled style="flex:1;border:1px solid #e2e6ec;border-radius:20px;padding:10px 16px;font-size:13px;outline:none;color:#424242;">
+      <button id="chatbot-submit-btn" type="submit" style="width:38px;height:38px;border-radius:50%;background:#1e5aa8;color:#fff;display:grid;place-items:center;flex-shrink:0;border:none;cursor:pointer;outline:none;" disabled style="opacity:0.6;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+      </button>
+    </form>
+    
+    <!-- Footer -->
+    <div style="padding:6px 14px 10px;font-size:10px;color:#757575;font-family:'JetBrains Mono',monospace;text-align:center;background:#fff;flex-shrink:0;border-top:1px solid #f2f5f9;">POWERED BY CSCAM · AI Q&amp;A LEARNING IN PROGRESS</div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var toggleBtn = document.getElementById('chatbot-toggle-btn');
+  var badge = document.getElementById('chatbot-badge');
+  var panel = document.getElementById('chatbot-panel');
+  var closeBtn = document.getElementById('chatbot-close-btn');
+  var msgArea = document.getElementById('chatbot-messages');
+  var inputField = document.getElementById('chatbot-input-field');
+  var submitBtn = document.getElementById('chatbot-submit-btn');
+  
+  // Conversation state
+  var chatState = {
+    step: 'init', // 'init', 'name', 'contact', 'message', 'complete'
+    category: '',
+    name: '',
+    contact: '',
+    message: ''
+  };
+
+  // Toggle panel
+  toggleBtn.addEventListener('click', function() {
+    badge.style.display = 'none'; // Hide notification badge on first click
+    if (panel.style.display === 'none' || !panel.style.display) {
+      panel.style.display = 'flex';
+      setTimeout(function() {
+        panel.style.transform = 'translateY(0)';
+        panel.style.opacity = '1';
+      }, 10);
+    } else {
+      panel.style.transform = 'translateY(15px)';
+      panel.style.opacity = '0';
+      setTimeout(function() {
+        panel.style.display = 'none';
+      }, 250);
+    }
+  });
+
+  // Close panel
+  closeBtn.addEventListener('click', function() {
+    panel.style.transform = 'translateY(15px)';
+    panel.style.opacity = '0';
+    setTimeout(function() {
+      panel.style.display = 'none';
+    }, 250);
+  });
+
+  // Render Bot message
+  function appendBotMsg(htmlContent) {
+    var html = '<div class="bot-msg-wrapper" style="display:flex;gap:8px;max-width:90%;margin-bottom:12px;">' +
+      '<div style="width:28px;height:28px;border-radius:50%;background:#eaf3fc;color:#1e5aa8;display:grid;place-items:center;flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4M8 16h.01M16 16h.01"></path></svg></div>' +
+      '<div style="max-width:calc(100% - 36px);padding:10px 14px;border-radius:2px 10px 10px 10px;font-size:13px;line-height:1.5;background:#fff;border:1px solid #e2e6ec;color:#424242;word-break:break-all;">' +
+        htmlContent +
+      '</div>' +
+    '</div>';
+    msgArea.insertAdjacentHTML('beforeend', html);
+    msgArea.scrollTop = msgArea.scrollHeight;
+  }
+
+  // Render User message
+  function appendUserMsg(textContent) {
+    var html = '<div class="user-msg-wrapper" style="display:flex;justify-content:flex-end;width:100%;margin-bottom:12px;">' +
+      '<div style="max-width:80%;padding:10px 14px;border-radius:10px 2px 10px 10px;font-size:13px;line-height:1.5;background:#1e5aa8;color:#fff;word-break:break-all;text-align:left;">' +
+        textContent +
+      '</div>' +
+    '</div>';
+    msgArea.insertAdjacentHTML('beforeend', html);
+    msgArea.scrollTop = msgArea.scrollHeight;
+  }
+
+  // Render Typing Indicator
+  function appendTyping() {
+    var id = 'typing-' + Date.now();
+    var html = '<div id="' + id + '" style="display:flex;gap:8px;max-width:90%;margin-bottom:12px;">' +
+      '<div style="width:28px;height:28px;border-radius:50%;background:#eaf3fc;color:#1e5aa8;display:grid;place-items:center;flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4M8 16h.01M16 16h.01"></path></svg></div>' +
+      '<div style="padding:10px 14px;border-radius:2px 10px 10px 10px;font-size:13px;background:#fff;border:1px solid #e2e6ec;color:#888;display:flex;align-items:center;gap:3px;">' +
+        '입력 중<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span>' +
+      '</div>' +
+    '</div>';
+    msgArea.insertAdjacentHTML('beforeend', html);
+    msgArea.scrollTop = msgArea.scrollHeight;
+    return id;
+  }
+
+  function removeTyping(id) {
+    var el = document.getElementById(id);
+    if (el) el.remove();
+  }
+
+  // Initial welcome screen matching original UI
+  function appendInitialWelcome() {
+    var welcomeHtml = '안녕하세요! 씨에스캠 3D 프린터 상담 챗봇입니다.<br>아래 항목을 선택하거나 궁금하신 점을 입력해 주세요.' +
+      '<div style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">' +
+        '<button type="button" class="chatbot-opt-btn" onclick="selectChatbotOption(1, \'AnyX-M Series(SLM) 스펙이 궁금해요\')">AnyX-M Series(SLM) 스펙이 궁금해요</button>' +
+        '<button type="button" class="chatbot-opt-btn" onclick="selectChatbotOption(2, \'AnyX-S Series 문의\')">AnyX-S Series 문의</button>' +
+        '<button type="button" class="chatbot-opt-btn" onclick="selectChatbotOption(3, \'담당자 연결 (062-946-1900)\')">담당자 연결 (062-946-1900)</button>' +
+      '</div>';
+    appendBotMsg(welcomeHtml);
+  }
+
+  // Handle option selection
+  window.selectChatbotOption = function(optionIndex, text) {
+    appendUserMsg(text);
+    
+    // Disable all options buttons to prevent re-click
+    var buttons = document.querySelectorAll('.chatbot-opt-btn');
+    buttons.forEach(function(b) { b.disabled = true; });
+
+    var typingId = appendTyping();
+
+    setTimeout(function() {
+      removeTyping(typingId);
+      if (optionIndex === 1 || optionIndex === 2) {
+        chatState.category = (optionIndex === 1) ? 'AnyX-M Series(SLM) 스펙 문의' : 'AnyX-S Series 문의';
+        chatState.step = 'name';
+        
+        appendBotMsg('선택해 주셔서 감사합니다! 상세 자료 송부 및 정확한 기술 상담을 도와드리기 위해 먼저 고객님의 <strong>성함(회사명)</strong>을 아래 입력창에 작성해 주세요.');
+        
+        // Enable input field
+        inputField.disabled = false;
+        inputField.placeholder = '성함 또는 회사명을 입력하세요...';
+        inputField.focus();
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+      } else if (optionIndex === 3) {
+        chatState.step = 'complete';
+        appendBotMsg('씨에스캠 3D프린터 사업부 대표 문의망입니다.<br><br>• <strong>대표 전화</strong>: 062-946-1900<br>• <strong>상담 메일</strong>: info@cscam.co.kr<br>• <strong>상담 시간</strong>: 평일 08:30 ~ 17:30 (토/일/공휴일 휴무)<br><br>유선으로 연락 주시면 가장 빠른 담당자 인계 및 정밀 기술 상담이 가능합니다.');
+        appendRestartButton();
+      }
+    }, 600);
+  };
+
+  // Submit contact data step-by-step
+  window.handleChatbotSubmit = function(event) {
+    event.preventDefault();
+    var query = inputField.value.trim();
+    if (!query) return;
+
+    inputField.value = '';
+    appendUserMsg(query);
+
+    var typingId = appendTyping();
+
+    setTimeout(function() {
+      removeTyping(typingId);
+
+      if (chatState.step === 'name') {
+        chatState.name = query;
+        chatState.step = 'contact';
+        
+        appendBotMsg('감사합니다, ' + query + '님!<br>안내서와 견적 사양을 전송받으실 <strong>연락처(전화번호 또는 메일 주소)</strong>를 입력해 주세요.');
+        inputField.placeholder = '전화번호 또는 이메일을 입력하세요...';
+        inputField.focus();
+      } else if (chatState.step === 'contact') {
+        chatState.contact = query;
+        chatState.step = 'message';
+        
+        appendBotMsg('연락처가 등록되었습니다.<br>마지막으로 도입 검토 시기, 특별 제작 사양 등 <strong>상세한 문의사항</strong>이 있으시면 입력해 주세요. (없으시다면 "없음" 입력)');
+        inputField.placeholder = '상세 요구사항을 입력하세요...';
+        inputField.focus();
+      } else if (chatState.step === 'message') {
+        chatState.message = query;
+        chatState.step = 'complete';
+        
+        // Save to localStorage
+        saveChatbotInquiry();
+
+        appendBotMsg('소중한 상담 요청이 접수되었습니다. 담당 대표 영업자에게 해당 자료가 즉시 인계됩니다.<br><br>' +
+                     '• <strong>문의 구분</strong>: ' + chatState.category + '<br>' +
+                     '• <strong>성함/회사</strong>: ' + chatState.name + '<br>' +
+                     '• <strong>연락처</strong>: ' + chatState.contact + '<br>' +
+                     '• <strong>문의 내용</strong>: ' + chatState.message + '<br><br>' +
+                     '검토 후 평일 기준 24시간 이내에 유선 혹은 메일로 신속히 연락해 드리겠습니다.');
+        
+        // Disable input
+        inputField.disabled = true;
+        inputField.placeholder = '접수가 성공적으로 완료되었습니다.';
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.6';
+
+        appendRestartButton();
+      }
+    }, 700);
+  };
+
+  // Save inquiry in localStorage
+  function saveChatbotInquiry() {
+    try {
+      var dataList = JSON.parse(localStorage.getItem('cscam_inquiries') || '[]');
+      dataList.push({
+        date: new Date().toLocaleString('ko-KR'),
+        category: chatState.category,
+        name: chatState.name,
+        contact: chatState.contact,
+        message: chatState.message
+      });
+      localStorage.setItem('cscam_inquiries', JSON.stringify(dataList));
+      console.log('CSCAM Inquiry Saved:', chatState);
+    } catch (e) {
+      console.error('Failed to save inquiry data', e);
+    }
+  }
+
+  // Restart dialogue
+  window.restartChatbot = function() {
+    chatState.step = 'init';
+    chatState.category = '';
+    chatState.name = '';
+    chatState.contact = '';
+    chatState.message = '';
+    
+    msgArea.innerHTML = '';
+    appendInitialWelcome();
+    
+    inputField.disabled = true;
+    inputField.placeholder = '메시지를 입력하세요 (준비 중)';
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = '0.6';
+  };
+
+  function appendRestartButton() {
+    var html = '<div style="display:flex;justify-content:center;margin-top:10px;width:100%;">' +
+        '<button type="button" class="chatbot-opt-btn" onclick="restartChatbot()" style="text-align:center;font-weight:700;">처음 단계로 돌아가기</button>' +
+      '</div>';
+    msgArea.insertAdjacentHTML('beforeend', html);
+    msgArea.scrollTop = msgArea.scrollHeight;
+  }
+
+  // Load welcome bubble
+  appendInitialWelcome();
+})();
+
+// Dynamic Family Site Link Auto-Toggler (Local vs. Deployed)
+document.addEventListener("DOMContentLoaded", function() {
+  const isLocal = location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.protocol === "file:";
+  const path = location.pathname;
+  
+  // Find GNB family links
+  const familyLinks = document.querySelectorAll(".family-bar-nav a, .drawer a, .desktop-nav a");
+  
+  familyLinks.forEach(link => {
+    const text = link.textContent.trim().toUpperCase();
+    if (!text.includes("3D PRINTER") && !text.includes("LASER") && !text.includes("TEXTURING") && !text.includes("ENGRAVING") && !text.includes("MARKING")) {
+      return;
+    }
+    
+    const isAt3dp = path.includes("3dprinter");
+    const isAtEngraving = path.includes("engraving");
+    const isAtMarking = path.includes("marking");
+    
+    if (text.includes("3D PRINTER")) {
+      if (isAt3dp) {
+        link.href = "#heroSection";
+      } else {
+        link.href = isLocal ? "../../3dprinter/index.html" : "https://kookai2026.github.io/cscam-3dprinter/sites/3dprinter/";
+      }
+    } else if (text.includes("LASER") || text.includes("TEXTURING") || text.includes("ENGRAVING")) {
+      if (isAtEngraving) {
+        link.href = "#hero";
+      } else if (isAt3dp) {
+        link.href = isLocal ? "../machine/engraving/index.html" : "https://kookai2026.github.io/cscam-engraving/";
+      } else {
+        link.href = isLocal ? "../engraving/index.html" : "https://kookai2026.github.io/cscam-engraving/";
+      }
+    } else if (text.includes("MARKING")) {
+      if (isAtMarking) {
+        link.href = "#hero";
+      } else if (isAt3dp) {
+        link.href = isLocal ? "../machine/marking/index.html" : "https://kookai2026.github.io/cscam-marking/";
+      } else {
+        link.href = isLocal ? "../marking/index.html" : "https://kookai2026.github.io/cscam-marking/";
+      }
+    }
+  });
+});
 </script>
 </body>
 </html>

@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSCAM 고해상도 문자마킹기 | 씨에스캠주식회사</title>
+  <meta name="description" content="조선 전처리 라인을 위한 피에조 방식 고해상도 문자마킹 시스템 및 대면적 이동식 판넬 마킹 시스템. 국내 주요 조선사 최다 구축 실적으로 검증된 신뢰성.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+KR:wght@300;400;500;700;900&amp;family=Space+Grotesk:wght@500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f4faf6; /* light green/white tint */
+      --bg-deep: #e8f5ed; /* deeper green-tinted white */
+      --main: #0c3b1e; /* deep forest green */
+      --accent: #00c357; /* CSCAM green accent */
+      --accent-hover: #00a147;
+      --cscam-blue: #1e5aa8;
+      --text: #0d2114;
+      --text-dim: #2f4537;
+      --text-mute: #5a7364;
+      --line: rgba(0,195,87,.15);
+      --line-soft: rgba(0,195,87,.08);
+      --card: #ffffff;
+      --glow: 0 12px 30px rgba(0,195,87,.08);
+      --on-dark: #f4fbf7;
+      --on-dark-dim: #c2e2d0;
+      --radius: 12px;
+      --section-y: clamp(64px, 9vw, 112px);
+      --container: 1320px;
+      --ff-head: 'Space Grotesk', 'Noto Sans KR', sans-serif;
+      --ff-body: 'Noto Sans KR', 'Inter', sans-serif;
+      --ff-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+    body { background: var(--bg); color: var(--text); font-family: var(--ff-body); line-height: 1.6; -webkit-font-smoothing: antialiased; padding-top: 100px; }
+    img { max-width: 100%; display: block; }
+    a { color: var(--cscam-blue); text-decoration: none; transition: color .2s; }
+    a:hover { color: var(--accent); }
+    button { font-family: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 32px; }
+    .eyebrow { font-family: var(--ff-mono); font-size: 11.5px; font-weight: 600; color: var(--accent); letter-spacing: .22em; text-transform: uppercase; display: inline-block; margin-bottom: 14px; }
+    .h2 { font-family: var(--ff-head); font-weight: 800; font-size: clamp(28px, 4.4vw, 46px); color: var(--main); letter-spacing: -.02em; line-height: 1.15; }
+    .h3 { font-family: var(--ff-head); font-weight: 700; font-size: clamp(21px, 2.6vw, 26px); color: var(--main); letter-spacing: -.01em; line-height: 1.4; }
+    .section-head { margin-bottom: 52px; }
+    .section-head.center { text-align: center; }
+    .section-sub { color: var(--text-mute); font-size: 15px; margin-top: 10px; max-width: 640px; }
+    .section-head.center .section-sub { margin-inline: auto; }
+    .body-text { color: var(--text-dim); font-size: 15.5px; line-height: 1.8; }
+    section { padding: var(--section-y) 0; position: relative; }
+    .bg-alt { background: var(--bg-alt); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+    .grid-lines { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,195,87,.01) 1px,transparent 1px),linear-gradient(90deg,rgba(0,195,87,.01) 1px,transparent 1px); background-size: 44px 44px; pointer-events: none; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); transition: border-color .3s, box-shadow .3s, transform .3s; }
+    .card.hoverable:hover { border-color: var(--accent); box-shadow: var(--glow); transform: translateY(-3px); }
+    .reveal { opacity: 1; transform: translateY(0); transition: transform .6s ease; }
+    .reveal:not(.is-visible) { transform: translateY(14px); }
+    .hero-fadein { opacity: 0; transform: translateY(14px); animation: heroIn .8s ease .05s forwards; }
+    @keyframes heroIn { to { opacity: 1; transform: translateY(0); } }
+
+    /* header */
+    header { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,.96); backdrop-filter: blur(10px); border-bottom: 1px solid #e2e6ec; z-index: 900; }
+    .family-bar { background: #05080d; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .family-bar-inner { max-width: var(--container); margin: 0 auto; padding: 0 32px; height: 32px; display: flex; align-items: center; justify-content: flex-end; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+    .family-bar-inner::-webkit-scrollbar { display: none; }
+    .family-bar-label { font-family: var(--ff-mono); font-size: 9.5px; font-weight: 700; letter-spacing: .14em; color: #4a5c78; margin-right: auto; white-space: nowrap; }
+    .family-bar-nav { display: flex; gap: 2px; white-space: nowrap; }
+    .family-bar-nav a, .family-bar-nav span { font-family: var(--ff-mono); font-size: 10px; font-weight: 600; letter-spacing: .02em; padding: 6px 12px; border-radius: 4px; color: #7488a6; transition: all .2s; }
+    .family-bar-nav a:hover { color: #fff; background: rgba(255,255,255,.06); }
+    .family-bar-nav a.active { color: #fff; background: var(--cscam-blue); }
+    .family-bar-nav span.disabled { color: #3a4556; cursor: not-allowed; }
+    header .bar { max-width: var(--container); height: 68px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--ff-head); font-weight: 800; font-size: 19px; letter-spacing: .06em; color: #212121; display: flex; align-items: center; gap: 8px; }
+    .logo span { font-size: 11.5px; font-weight: 500; color: var(--accent); letter-spacing: 0; }
+    .desktop-nav { display: none; align-items: center; gap: 28px; }
+    .desktop-nav a { font-size: 14px; font-weight: 600; color: #212121; padding: 4px 0; border-bottom: 2px solid transparent; transition: all .2s; }
+    .desktop-nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .desktop-nav a.cta-link { font-weight: 700; color: var(--accent); }
+    .nav-cta { display: none; background: var(--accent); color: #fff; padding: 9px 20px; font-size: 13px; font-weight: 700; border-radius: 5px; box-shadow: var(--glow); transition: background .2s; }
+    .nav-cta:hover { background: var(--accent-hover); }
+    .menu-btn { width: 42px; height: 42px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; background: rgba(0,0,0,.04); border-radius: 5px; }
+    .menu-btn span { width: 18px; height: 2px; background: #212121; }
+    .drawer { position: fixed; top: 0; right: -280px; width: 280px; height: 100%; background: var(--bg); border-left: 1px solid var(--line); z-index: 950; transition: right .35s cubic-bezier(.16,1,.3,1); padding: 116px 26px 26px; display: flex; flex-direction: column; gap: 22px; }
+    .drawer.open { right: 0; }
+    .drawer a { font-size: 16px; color: var(--text); }
+    .drawer a.cta-link { color: var(--accent); font-weight: 700; }
+    .drawer .drawer-btn { background: var(--accent); color: #fff; text-align: center; padding: 13px; border-radius: 5px; margin-top: 8px; font-weight: 700; }
+    .drawer .close-btn { position: absolute; top: 22px; right: 22px; color: #8892b0; font-size: 22px; }
+
+    @media (min-width: 960px) {
+      .desktop-nav { display: flex; }
+      .nav-cta { display: inline-block; }
+      .menu-btn { display: none; }
+    }
+
+    /* hero */
+    #hero { min-height: 80vh; padding-top: 56px; padding-bottom: 56px; display: flex; align-items: center; position: relative; overflow:hidden; background: linear-gradient(rgba(12, 31, 20, 0.65), rgba(12, 31, 20, 0.65)), url('images/hero_bg.png') no-repeat center center / cover; color: #fff; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; }
+    .hero-content { z-index: 2; }
+    .hero-title { font-family: var(--ff-head); font-weight: 800; font-size: clamp(32px, 5vw, 54px); line-height: 1.1; letter-spacing: -.02em; margin-bottom: 24px; }
+    .hero-title span { color: var(--accent); }
+    .hero-desc { color: var(--on-dark-dim); font-size: clamp(15px, 2vw, 17px); line-height: 1.7; margin-bottom: 36px; max-width: 580px; }
+    .hero-links { display: flex; gap: 14px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; font-size: 14.5px; font-weight: 700; border-radius: 6px; transition: all .2s; }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 4px 20px rgba(0,195,87,.3); }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-secondary { border: 1px solid rgba(255,255,255,.2); color: #fff; }
+    .btn-secondary:hover { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.4); }
+
+    /* mockup visual */
+    .hero-visual { position: relative; z-index: 2; display: flex; justify-content: center; }
+    .visual-card { width: 100%; max-width: 480px; aspect-ratio: 1.3/1; background: rgba(255,255,255,.03); border: 1px solid rgba(0,195,87,.25); border-radius: 16px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.3); display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; }
+    .visual-glow { position: absolute; width: 240px; height: 240px; background: rgba(0,195,87,.15); filter: blur(60px); top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+    
+    /* table style */
+    .comparison-table { width: 100%; border-collapse: collapse; margin-top: 32px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); }
+    .comparison-table th, .comparison-table td { padding: 14px 18px; text-align: center; font-size: 14px; }
+    .comparison-table th { background: var(--bg-deep); color: var(--main); font-weight: 700; border-bottom: 2px solid var(--line); }
+    .comparison-table td { background: #fff; border-bottom: 1px solid var(--line-soft); }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table .highlight-col { background: var(--bg-alt); font-weight: 600; color: var(--main); }
+
+    /* spec card inside separate section */
+    .spec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 32px; }
+    .spec-card { padding: 24px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
+    .spec-title { font-size: 16px; font-weight: 700; color: var(--main); margin-bottom: 14px; border-left: 3px solid var(--accent); padding-left: 10px; }
+    .spec-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--line-soft); font-size: 13.5px; }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-row .label { color: var(--text-mute); }
+    .spec-row .value { font-weight: 600; color: var(--text); }
+
+    /* records timeline */
+    .record-table { width: 100%; border-collapse: collapse; margin-top: 24px; }
+    .record-table th, .record-table td { padding: 12px 16px; text-align: left; font-size: 13.5px; }
+    .record-table th { background: var(--main); color: #fff; font-weight: 600; }
+    .record-table td { border-bottom: 1px solid var(--line-soft); }
+    .record-table tr:nth-child(even) td { background: var(--bg-alt); }
+
+    /* contact form */
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 6px; color: var(--text-dim); }
+    .form-control { width: 100%; padding: 12px 16px; border: 1px solid var(--line); border-radius: 6px; font-family: inherit; font-size: 14px; outline: none; transition: border-color .2s; }
+    .form-control:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,195,87,.08); }
+    textarea.form-control { resize: vertical; min-height: 120px; }
+
+    /* responsive */
+    @media (max-width: 960px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-content { display: flex; flex-direction: column; align-items: center; }
+      .hero-links { width: 100%; flex-direction: column; }
+      .visual-card { margin: 0 auto; }
+      .spec-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="family-bar">
+    <div class="family-bar-inner">
+      <span class="family-bar-label">CSCAM 기계사업부</span>
+      <nav class="family-bar-nav">
+        <a href="https://kookai2026.github.io/cscam-3dprinter/sites/3dprinter/">3D PRINTER</a>
+        <a href="https://kookai2026.github.io/cscam-engraving/">LASER TEXTURING</a>
+        <a href="#hero" class="active">MARKING MACHINE</a>
+        <span class="disabled">ETC</span>
+      </nav>
+    </div>
+  </div>
+  <div class="bar container">
+    <div style="display:flex;align-items:center;gap:24px;">
+      <a href="#" class="logo">
+        <div>
+          <small style="display:block;font-size:9.5px;color:var(--text-mute);letter-spacing:.04em;margin-bottom:1px;font-weight:600;text-align:left;">씨에스캠주식회사</small>
+          <div style="font-family:var(--ff-head);font-weight:800;font-size:18px;font-style:italic;color:var(--accent);letter-spacing:.01em;line-height:1.1;">MARKING MACHINE</div>
+        </div>
+      </a>
+    </div>
+    
+    <nav class="desktop-nav">
+      <a href="#concept">개념</a>
+      <a href="#stationary">고정식 시스템</a>
+      <a href="#mobile">이동식 시스템</a>
+      <a href="#software">소프트웨어</a>
+      <a href="#gallery">실증사례</a>
+      <a href="#records">납품실적</a>
+      <a href="#contact" class="cta-link">문의하기</a>
+    </nav>
+
+    <div style="display:flex;align-items:center;gap:14px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div style="display:flex;align-items:baseline;font-family:Verdana,sans-serif;font-size:20px;color:var(--cscam-blue);"><span style="font-weight:700;">CS</span><span style="font-weight:400;">CAM</span></div>
+        <div style="width:1px;height:24px;background:#e2e6ec;margin:0 4px;"></div>
+        <div style="display:flex;gap:6px;align-items:center;color:#757575;font-size:11px;font-family:var(--ff-mono);letter-spacing:.1em;">
+          <span style="color:var(--cscam-blue);font-weight:700;">KR</span><span>·</span><span>EN</span>
+        </div>
+      </div>
+      <button class="menu-btn" onclick="toggleDrawer()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer">
+  <button class="close-btn" onclick="toggleDrawer()">✕</button>
+  <a href="#concept" onclick="toggleDrawer()">개념</a>
+  <a href="#stationary" onclick="toggleDrawer()">고정식 시스템</a>
+  <a href="#mobile" onclick="toggleDrawer()">이동식 시스템</a>
+  <a href="#software" onclick="toggleDrawer()">소프트웨어</a>
+  <a href="#gallery" onclick="toggleDrawer()">실증사례</a>
+  <a href="#records" onclick="toggleDrawer()">납품실적</a>
+  <a href="#contact" class="cta-link" onclick="toggleDrawer()">문의하기</a>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container hero-grid">
+      <div class="hero-content hero-fadein">
+        <span class="eyebrow" style="color:var(--accent);">High-Resolution Marking System</span>
+        <h1 class="hero-title">고해상도 조선 전처리<br><span>문자마킹 시스템</span></h1>
+        <p class="hero-desc">
+          국내 대형 조선소들이 15년 이상 현업 양산 라인에서 선택해 온 신뢰의 스마트 솔루션. 독보적 고해상도 인쇄 기술로 대형 강재 표면에 마크와 문자를 완벽히 각인합니다.
+        </p>
+        <div class="hero-links">
+          <a href="#contact" class="btn btn-primary">도입 상담 신청</a>
+          <a href="#stationary" class="btn btn-secondary">장비 라인업 상세</a>
+        </div>
+      </div>
+      <style>
+        @keyframes videoPulse {
+          0% { transform: scale(1); opacity: 0.95; }
+          50% { transform: scale(1.08); opacity: 1; box-shadow: 0 0 20px rgba(0, 195, 87, 0.3); }
+          100% { transform: scale(1); opacity: 0.95; }
+        }
+      </style>
+      <div class="hero-visual hero-fadein">
+        <div class="visual-card" style="border: 2px dashed rgba(0, 195, 87, 0.45); background: rgba(0, 195, 87, 0.04); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 48px 32px; aspect-ratio: 1.5/1; width: 100%; max-width: 520px; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,.4); position: relative;">
+          <div style="width: 68px; height: 68px; border-radius: 50%; background: rgba(0, 195, 87, 0.16); display: grid; place-items: center; margin-bottom: 24px; color: var(--accent); animation: videoPulse 2.4s infinite ease-in-out;">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+          </div>
+          <h4 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; font-family: var(--ff-head);">고해상도 문자마킹기 구동 영상</h4>
+          <span style="display:inline-block;padding:4px 10px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;border-radius:4px;letter-spacing:.05em;margin-bottom:14px;font-family:var(--ff-mono);text-transform:uppercase;">Video Insertion Scheduled</span>
+          <p style="font-size: 13px; color: var(--on-dark-dim); max-width: 320px; line-height: 1.6; margin-bottom: 0;">현장 양산 운용 및 마킹 구동 시연 동영상 삽입 예정 영역입니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCEPT -->
+  <section id="concept">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Core Technology</span>
+        <h2 class="h2">왜 피에조(Piezo) 방식 문자마킹기인가?</h2>
+        <p class="section-sub" style="max-width: 900px;">씨에스캠이 적용하는 피에조 압전 헤드 엔진은 구형 DOD 밸브 개방 방식 대비 압도적인 해상도와 친환경성을 제공합니다.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr;gap:32px;" class="reveal">
+        <!-- Comparison Table -->
+        <div style="overflow-x:auto;">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>구분 및 성능 비교</th>
+                <th class="highlight-col">피에조 방식 (CSCAM 적용 엔진)</th>
+                <th>DOD 방식 (Drop on demand)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight:600;">인쇄 방식</td>
+                <td class="highlight-col">피에조 (Piezo) 압전 구동 제어</td>
+                <td>전기 코일에 의한 밸브 개방 방식</td>
+              </tr>
+              <tr>
+                <td style="font-weight:600;">사용 잉크</td>
+                <td class="highlight-col">친환경 오일계 (OIL) 잉크</td>
+                <td>휘발성 유기용제 잉크 (M.E.K / 알코올계)</td>
+              </tr>
+              <tr>
+                <td style="font-weight:600;">도트(Dot) 사이즈</td>
+                <td class="highlight-col">0.282 mm (초미세 초정밀 제어)</td>
+                <td>2.0 mm / 4.0 mm (거친 도트 표기)</td>
+              </tr>
+              <tr>
+                <td style="font-weight:600;">작업자 유해성</td>
+                <td class="highlight-col">매우 낮음 (인체 무해, 냄새 없음)</td>
+                <td>매우 높음 (유기용제 유해 가스 흡입 위험)</td>
+              </tr>
+              <tr>
+                <td style="font-weight:600;">노즐 막힘 빈도</td>
+                <td class="highlight-col">없음 (안정적인 헤드 유동 유지)</td>
+                <td>빈번함 (휘발 성분으로 인해 미사용 시 노즐 고착)</td>
+              </tr>
+              <tr>
+                <td style="font-weight:600;">클리닝 솔벤트</td>
+                <td class="highlight-col">사용하지 않음 (친환경 &amp; 폐액 발생 제로)</td>
+                <td>사용 필수 (주기적 솔벤트 세척 필요, 유지비 증가)</td>
+              </tr>
+              <tr>
+                <td style="font-weight:600;">청소 및 유지보수</td>
+                <td class="highlight-col">간단하고 편리함 (유지보수 인프라 최소화)</td>
+                <td>매우 복잡하고 정기적 청소 시간 소요</td>
+              </tr>
+              <tr>
+                <td style="font-weight:600;">최소 인쇄 문자 크기</td>
+                <td class="highlight-col">20mm X 20mm 이하도 완벽 판독 가능</td>
+                <td>32mm 이상만 인쇄 가능 (미세 마킹 불가능)</td>
+              </tr>
+              <tr>
+                <td style="font-weight:600;">기호 및 심볼 인쇄</td>
+                <td class="highlight-col">고해상도 로고, 심볼, 기호 자유로운 인쇄</td>
+                <td>단순 도트형 제한된 텍스트만 가능</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:24px;margin-top:24px;">
+          <div class="card hoverable" style="padding:28px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:var(--bg-deep);display:grid;place-items:center;color:var(--accent);margin-bottom:20px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+            </div>
+            <h4 style="font-size:16px;font-weight:700;margin-bottom:10px;">초정밀 고선명 마킹</h4>
+            <p style="font-size:13.5px;color:var(--text-dim);line-height:1.6;">0.282mm 도트 사이즈의 미세 제어로 바코드, AR-CODE 및 20mm 이하 소문자까지 판독 불량 없이 선명하게 각인합니다.</p>
+          </div>
+          <div class="card hoverable" style="padding:28px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:var(--bg-deep);display:grid;place-items:center;color:var(--accent);margin-bottom:20px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h4 style="font-size:16px;font-weight:700;margin-bottom:10px;">작업 환경 개선 및 무독성</h4>
+            <p style="font-size:13.5px;color:var(--text-dim);line-height:1.6;">독성 강한 MEK 유기용제 대신 인체에 유해 성분이 없는 친환경 오일 잉크를 적용하여 폐액 발생을 억제하고 실내 가동 환경을 개선합니다.</p>
+          </div>
+          <div class="card hoverable" style="padding:28px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:var(--bg-deep);display:grid;place-items:center;color:var(--accent);margin-bottom:20px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            </div>
+            <h4 style="font-size:16px;font-weight:700;margin-bottom:10px;">획기적인 소모품비 절감</h4>
+            <p style="font-size:13.5px;color:var(--text-dim);line-height:1.6;">솔벤트를 분사해 헤드를 청소할 필요가 없으므로 정기 소모품 비용이 크게 감소하며, 24시간 가동 시 연속 프린트 안정성이 우수합니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1: STATIONARY SYSTEM -->
+  <section id="stationary" class="bg-alt">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Stationary System</span>
+        <h2 class="h2">고해상도 고정식 문자마킹 시스템</h2>
+        <p class="section-sub">선박 전처리 강판 컨베이어 라인 상단에 영구 고정되어 통과하는 플레이트 전체 또는 중앙 ID를 정밀 마킹합니다.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:flex-start;" class="reveal">
+        <div>
+          <h3 class="h3" style="margin-bottom:16px;">고정식 강재 문자마킹기 (전체 마킹기 / ID 마킹기)</h3>
+          <p class="body-text" style="margin-bottom:20px;">
+            고정 갠트리 프레임에 초정밀 피에조 마킹 헤드를 배열하여 강재가 통과하는 순간 실시간 가속 및 트리거 동작으로 텍스트 및 조립용 심볼을 마킹합니다. 최대 17개 마킹 헤드가 장착되어 4.8m 너비의 대형 판판 전체를 한 번에 커버합니다.
+          </p>
+          
+          <ul style="list-style:none;margin-bottom:30px;">
+            <li style="margin-bottom:10px;font-size:14.5px;color:var(--text-dim);"><span style="color:var(--accent);margin-right:8px;">✔</span><strong>전체 마킹기 (Full Surface)</strong>: 마킹 헤드 17세트 장착, 유효 마킹 범위 최대 4,800mm (강재 ID + 소부재 분할 표기 최적화)</li>
+            <li style="margin-bottom:10px;font-size:14.5px;color:var(--text-dim);"><span style="color:var(--accent);margin-right:8px;">✔</span><strong>ID 마킹기 (Central ID)</strong>: 마킹 헤드 4세트 장착, 유효 마킹 범위 최대 1,128mm (강재 중심 식별용 문자 및 코드 전용)</li>
+            <li style="margin-bottom:10px;font-size:14.5px;color:var(--text-dim);"><span style="color:var(--accent);margin-right:8px;">✔</span><strong>실시간 물리 계측 모듈</strong>: 초음파 센서를 적용한 강재 두께 자동 검출 (6T ~ 120T) 및 레이저 뒤틀림 각도 측정 모듈 기본 연동</li>
+          </ul>
+
+          <div class="spec-grid" style="grid-template-columns: 1fr; margin-top: 0;">
+            <div class="card spec-card">
+              <h4 class="spec-title">고정식 시스템 기본 제원</h4>
+              <div class="spec-row"><span class="label">마킹 가능한 강재 두께</span><span class="value">6T ~ 120T 플레이트</span></div>
+              <div class="spec-row"><span class="label">폭-측정부 서보제어</span><span class="value">0.4kW 서보 모터 * 2 SET (리니어 스케일 탑재)</span></div>
+              <div class="spec-row"><span class="label">마킹 헤드 구성</span><span class="value">헤드 1세트당 4개의 피에조 마킹 엔진 장착</span></div>
+              <div class="spec-row"><span class="label">계측 구성</span><span class="value">두께(초음파), 각도(레이저), 진입(근접센서), 길이(정밀엔코더)</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:24px;width:100%;">
+          <!-- Video 1 Placeholder -->
+          <div class="visual-card" style="border: 2px dashed rgba(0, 195, 87, 0.35); background: rgba(0, 195, 87, 0.02); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 28px 20px; aspect-ratio: 1.6/1; width: 100%; border-radius: 12px;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(0, 195, 87, 0.1); display: grid; place-items: center; margin-bottom: 12px; color: var(--accent);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+            </div>
+            <h5 style="font-size: 14px; font-weight: 700; color: var(--main); margin-bottom: 4px;">고정식 전체마킹기 운용 영상</h5>
+            <p style="font-size: 11.5px; color: var(--text-mute); margin-bottom: 0;">비디오 파일 삽입 예정 영역</p>
+          </div>
+          <!-- Video 2 Placeholder -->
+          <div class="visual-card" style="border: 2px dashed rgba(0, 195, 87, 0.35); background: rgba(0, 195, 87, 0.02); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 28px 20px; aspect-ratio: 1.6/1; width: 100%; border-radius: 12px;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(0, 195, 87, 0.1); display: grid; place-items: center; margin-bottom: 12px; color: var(--accent);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+            </div>
+            <h5 style="font-size: 14px; font-weight: 700; color: var(--main); margin-bottom: 4px;">고정식 ID마킹기 운용 영상</h5>
+            <p style="font-size: 11.5px; color: var(--text-mute); margin-bottom: 0;">비디오 파일 삽입 예정 영역</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Installation cards row -->
+      <div style="margin-top:48px;" class="reveal">
+        <style>
+          .install-row-card {
+            position: relative;
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+            box-shadow: var(--glow);
+            overflow: hidden;
+            margin-bottom: 32px;
+          }
+          .install-row-logo {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid var(--line-soft);
+            border-radius: 6px;
+            padding: 6px 12px;
+            max-height: 28px;
+            max-width: 140px;
+            object-fit: contain;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+            z-index: 10;
+          }
+          .install-row-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            padding: 16px;
+          }
+          @media (min-width: 768px) {
+            .install-row-grid-2 {
+              grid-template-columns: 1fr 1fr;
+            }
+          }
+          .install-row-single {
+            padding: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .install-row-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            object-fit: cover;
+          }
+          .install-row-caption {
+            padding: 14px 20px;
+            background: var(--bg-alt);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--main);
+            border-top: 1px solid var(--line-soft);
+          }
+        </style>
+
+        <!-- Row 1: HHI (고정식1.png + 고정식2.png) -->
+        <div class="install-row-card">
+          <div class="install-row-grid-2">
+            <img src="images/stationary_01.png" alt="고정식 문자마킹기 설치 1" class="install-row-img">
+            <img src="images/stationary_02.png" alt="고정식 문자마킹기 설치 2" class="install-row-img">
+          </div>
+          <div class="install-row-caption">
+            HD현대중공업 (울산 야드) - 고정식 문자마킹 시스템 설치 및 가동 현장
+          </div>
+        </div>
+
+        <!-- Row 2: Samsung (고정식3_삼성.png) -->
+        <div class="install-row-card">
+          <div style="padding:16px;">
+            <img src="images/stationary_03.png" alt="고정식 문자마킹기 설치 삼성" class="install-row-img" style="width:100%;height:auto;display:block;object-fit:cover;">
+          </div>
+          <div class="install-row-caption">
+            삼성중공업 (거제 조선소) - 고해상도 고정식 문자마킹 시스템
+          </div>
+        </div>
+
+        <!-- Row 3: Aramco (고정식4_아람코.png + 고정식4_아람코2.png) -->
+        <div class="install-row-card">
+          <div class="install-row-grid-2">
+            <img src="images/stationary_04.png" alt="고정식 문자마킹기 설치 아람코 1" class="install-row-img">
+            <img src="images/stationary_05.png" alt="고정식 문자마킹기 설치 아람코 2" class="install-row-img">
+          </div>
+          <div class="install-row-caption">
+            사우디 아람코 IMI 조선소 - 고해상도 전체 마킹기 및 ID 마킹기 가동 현장
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: MOBILE PANEL SYSTEM -->
+  <section id="mobile">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Mobile Panel System</span>
+        <h2 class="h2">대면적 이동식 판넬 문자마킹 시스템</h2>
+        <p class="section-sub">갠트리 레일 위를 자동 질주하며 대형 구조 주판(Panel) 위에 조립 유도선(라인) 및 식별용 문자를 고속 인쇄합니다.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:flex-start;" class="reveal">
+        <div>
+          <h3 class="h3" style="margin-bottom:16px;">주판 라인마킹 &amp; 라벨링 시스템 (이동형 Gantry)</h3>
+          <p class="body-text" style="margin-bottom:20px;">
+            선박 블록 조립 공장의 대형 주판 영역을 정밀하게 이동하면서 각 소부재가 안착할 정밀 용접/가이드 경계선을 먹줄 작업 대신 잉크젯으로 인쇄하고, 부재 식별 마크 및 스마트 조립 스캔용 AR-CODE/QR-CODE를 완벽하게 마킹하는 첨단 스마트 조선 공정 장비입니다.
+          </p>
+          
+          <ul style="list-style:none;margin-bottom:30px;">
+            <li style="margin-bottom:10px;font-size:14.5px;color:var(--text-dim);"><span style="color:var(--accent);margin-right:8px;">✔</span><strong>대면적 자동 주행 제어</strong>: 야드 크기에 맞춰 설계된 레일식 갠트리 프레임 위에서 5축 서보 구동을 통한 광역 스캔 제어</li>
+            <li style="margin-bottom:10px;font-size:14.5px;color:var(--text-dim);"><span style="color:var(--accent);margin-right:8px;">✔</span><strong>복합 라인 &amp; 문자 인쇄</strong>: 두께감 있는 유도 라인 마킹 모듈과 고해상도 정보 문자 피에조 헤드 복합 제어</li>
+            <li style="margin-bottom:10px;font-size:14.5px;color:var(--text-dim);"><span style="color:var(--accent);margin-right:8px;">✔</span><strong>지능형 스마트 코드 지원</strong>: 삼성중공업 판넬라인 등에서 공인 테스트를 마친 AR-CODE / QR-CODE 마킹 검증 완료</li>
+          </ul>
+
+          <div class="spec-grid" style="grid-template-columns: 1fr; margin-top: 0;">
+            <div class="card spec-card">
+              <h4 class="spec-title">이동식 판넬마킹 시스템 기본 제원</h4>
+              <div class="spec-row"><span class="label">갠트리 주행 제어 방식</span><span class="value">랙앤피니언 고정밀 서보 동기화 구동</span></div>
+              <div class="spec-row"><span class="label">유효 마킹 대상</span><span class="value">대형 조립 주판(Panel Plate) 전체 영역 (ex, 30m x 30m)</span></div>
+              <div class="spec-row"><span class="label">대표 구축 사이트</span><span class="value">삼성중공업 판넬라인 자동 마킹 시스템</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <!-- Video: Mobile Operation -->
+          <div class="visual-card" style="border: 2px dashed rgba(0, 195, 87, 0.35); background: rgba(0, 195, 87, 0.02); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 48px 32px; aspect-ratio: 1.5/1; width: 100%; border-radius: 12px; box-shadow: var(--glow);">
+            <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(0, 195, 87, 0.1); display: grid; place-items: center; margin-bottom: 16px; color: var(--accent);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+            </div>
+            <h5 style="font-size: 15px; font-weight: 700; color: var(--main); margin-bottom: 6px;">이동식 판넬마킹기 운용현장 동영상</h5>
+            <p style="font-size: 12px; color: var(--text-mute); margin-bottom: 0;">비디오 파일 삽입 예정 영역</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detail cards row (Placeholders) -->
+      <div style="margin-top:48px;" class="reveal">
+        <style>
+          .mobile-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+          }
+          @media (min-width: 768px) {
+            .mobile-detail-grid {
+              grid-template-columns: 1fr 1fr;
+            }
+          }
+        </style>
+        <div class="mobile-detail-grid">
+          <!-- Placeholder Card 1 -->
+          <div class="visual-card" style="border: 2px dashed rgba(0, 195, 87, 0.3); background: rgba(0, 195, 87, 0.01); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 48px 24px; aspect-ratio: 1.8/1; width: 100%; border-radius: 12px;">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(0,195,87,0.4)" stroke-width="1.5" style="margin-bottom:14px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <h5 style="font-size: 14.5px; font-weight: 700; color: var(--main); margin-bottom: 6px;">주판 라인마킹 실물 상세</h5>
+            <p style="font-size: 12px; color: var(--text-mute); margin-bottom: 0;">이미지 삽입 예정 영역 (공란)</p>
+          </div>
+          <!-- Placeholder Card 2 -->
+          <div class="visual-card" style="border: 2px dashed rgba(0, 195, 87, 0.3); background: rgba(0, 195, 87, 0.01); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 48px 24px; aspect-ratio: 1.8/1; width: 100%; border-radius: 12px;">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(0,195,87,0.4)" stroke-width="1.5" style="margin-bottom:14px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <h5 style="font-size: 14.5px; font-weight: 700; color: var(--main); margin-bottom: 6px;">부재 라벨링 각인 실물 상세</h5>
+            <p style="font-size: 12px; color: var(--text-mute); margin-bottom: 0;">이미지 삽입 예정 영역 (공란)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL UTILITY -->
+  <section id="specifications" class="bg-alt">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Technical Utilities</span>
+        <h2 class="h2">장비 전기 및 기계 유틸리티 제원</h2>
+        <p class="section-sub">씨에스캠 문자마킹 시스템 가동에 요구되는 핵심 전기/공압/제어 유틸리티 사양 정보입니다.</p>
+      </div>
+
+      <div class="spec-grid reveal">
+        <!-- Electrical utility -->
+        <div class="card spec-card">
+          <h4 class="spec-title">1. 전기 Utility 제원</h4>
+          <div class="spec-row">
+            <span class="label">메인 공급 전원</span>
+            <span class="value">220V 3상 50/60Hz, 50KVA (AVR 400V to 220V 연동)</span>
+          </div>
+          <div class="spec-row">
+            <span class="label">안전 차단기 용량</span>
+            <span class="value">100A ~ 125A 차단기 내장</span>
+          </div>
+          <div class="spec-row">
+            <span class="label">폭-측정부 서보 시스템</span>
+            <span class="value">0.4kW Servo Motor * 2 SET (리니어스케일 연동)</span>
+          </div>
+          <div class="spec-row">
+            <span class="label">마킹부 서보 시스템</span>
+            <span class="value">5.5kW Servo Motor * 1 SET, 0.4kW Servo Motor * 1 SET</span>
+          </div>
+          <div class="spec-row">
+            <span class="label">잉크 시스템 제어 전원</span>
+            <span class="value">SMPS +24V * 1EA, 40A (960W)</span>
+          </div>
+          <div class="spec-row">
+            <span class="label">노즐 제어 및 I/O 시스템</span>
+            <span class="value">SMPS +24V * 1EA, 10A (240W)</span>
+          </div>
+          <div class="spec-row">
+            <span class="label">UV LED 경화 시스템 (옵션)</span>
+            <span class="value">SMPS +48V * 2EA, 62.5A (3000W) 고효율 자외선 경화기</span>
+          </div>
+        </div>
+
+        <!-- Mechanical utility -->
+        <div class="card spec-card">
+          <h4 class="spec-title">2. 기계 Utility 및 하드웨어 구성</h4>
+          <div class="spec-row">
+            <span class="label">메인 공급 공압 (Air)</span>
+            <span class="value">Normal 5 ~ 6 bar 상시 공급 필요</span>
+          </div>
+          <div class="spec-row">
+            <span class="label">공압 제어 대상</span>
+            <span class="value">헤드 업/다운 실린더 구동 및 센서 측정 유니트 작동</span>
+          </div>
+          <div class="spec-row">
+            <span class="label">강재 대응 두께 범위</span>
+            <span class="value">최소 6T ~ 최대 120T 중판/후판 모두 가공 가능</span>
+          </div>
+          <div class="spec-row">
+            <span class="label">두께/각도 계측 센서</span>
+            <span class="value">초음파 두께 측정 센서 &amp; 레이저 각도 비틀림 센서 내장</span>
+          </div>
+          <div class="spec-row">
+            <span class="label">마킹 엔진 헤드 구성</span>
+            <span class="value">헤드 1세트당 4개의 피에조 마킹 엔진(노즐단) 탑재</span>
+          </div>
+          <div class="spec-row">
+            <span class="label">헤드 1세트 유효 인쇄 폭</span>
+            <span class="value">헤드당 최대 280mm 정밀 인쇄 폭 제공</span>
+          </div>
+          <div class="spec-row">
+            <span class="label">진입/길이 검출</span>
+            <span class="value">근접 센서 및 정밀 엔코더 시스템 (+5V SMPS 공급)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOFTWARE & CAD FLOW -->
+  <section id="software">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Smart Data Workflow</span>
+        <h2 class="h2">씨에스캠 CAD &amp; IMD 마킹 데이터 흐름</h2>
+        <p class="section-sub">선박 설계국 CAD 데이터부터 가공 현장 마킹기까지 실시간 전송 처리하는 지능형 데이터 스케줄러</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center;" class="reveal">
+        <div>
+          <h3 class="h3" style="margin-bottom:16px;">자동화 마킹 처리 및 간편 데이터 매칭</h3>
+          <p class="body-text" style="margin-bottom:20px;">
+            설계 부서에서 로딩한 선박 도면(CAD Data)은 IMD(Initial Marking Data) 서버로 흘러 들어가 지능형 알고리즘을 거칩니다. 이 알고리즘은 <strong>문자 중복 회피, 가변 위치 연산, 대칭 처리</strong>를 자동으로 끝마칩니다.
+          </p>
+          <p class="body-text" style="margin-bottom:24px;">
+            중공업 네트워크망(CAD/IMD 서버) 구축이 어려운 극한의 야드 환경의 경우, 작업자가 매일의 철강 생산 계획 데이터를 USB 드라이브에 넣어 마킹룸 내의 Data PC에 신속하게 업로드하여 바로 마킹 작업을 시작할 수 있는 편의 기능이 기본 내장되어 있습니다.
+          </p>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:14px;color:var(--text-dim);">
+            <div style="display:flex;align-items:center;gap:10px;"><span style="color:var(--accent);font-weight:700;">[1] CAD Server</span><span>설계국 원본 선박 부재/강재 마크 데이터 생성 및 관리</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="color:var(--accent);font-weight:700;">[2] IMD Server</span><span>문자열 변환, 중복 검출 및 대칭형 부재 회전 연산 처리</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="color:var(--accent);font-weight:700;">[3] Data PC</span><span>현장 운영자용 모니터링 프로그램 (마킹 진행상황 스케줄링)</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="color:var(--accent);font-weight:700;">[4] Control PC</span><span>서보 제어기 및 피에조 헤드 17세트 전압/경화기 출력 제어</span></div>
+          </div>
+        </div>
+        <div class="visual-card" style="border: 2px dashed rgba(0, 195, 87, 0.3); background: rgba(0, 195, 87, 0.01); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 48px 24px; aspect-ratio: 1.4/1; width: 100%; border-radius: 12px; box-shadow: var(--glow);">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(0,195,87,0.4)" stroke-width="1.5" style="margin-bottom:14px;"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3z"></path><path d="M6 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3z"></path><line x1="9" y1="6" x2="15" y2="6"></line><line x1="9" y1="18" x2="15" y2="18"></line></svg>
+          <h5 style="font-size: 15px; font-weight: 700; color: var(--main); margin-bottom: 6px;">CAD/IMD 마킹 데이터 연동 흐름도</h5>
+          <p style="font-size: 12px; color: var(--text-mute); margin-bottom: 0;">이미지 삽입 예정 영역 (공란)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY (실제 마킹 실증 사례) -->
+  <section id="gallery">
+    <style>
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-top: 36px;
+      }
+      @media (min-width: 768px) {
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr); /* 2열 x 4행 구조 */
+        }
+      }
+    </style>
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Field Marking Results</span>
+        <h2 class="h2">실제 마킹 가동 및 실증 결과물</h2>
+        <p class="section-sub">카탈로그에 수록된 실제 대형 조선소 야드 현장의 마킹 가동 모습과 정밀 문자/코드 각인 실물 사진입니다.</p>
+      </div>
+
+      <div class="gallery-grid reveal">
+        <!-- Result 1 -->
+        <div class="card hoverable" style="overflow:hidden;box-shadow:var(--glow);">
+          <div style="width:100%;aspect-ratio:1.8/1;background:var(--bg-alt);display:flex;flex-direction:column;justify-content:center;align-items:center;border-bottom:2px dashed rgba(0,195,87,0.15);padding:24px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(0,195,87,0.4)" stroke-width="1.5" style="margin-bottom:10px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <span style="font-size:12px;color:var(--text-mute);font-weight:600;">실증 사진 삽입 예정 (공란)</span>
+          </div>
+          <div style="padding:24px;background:#fff;">
+            <h4 style="font-size:17px;font-weight:700;margin-bottom:8px;color:var(--main);">전체마킹기 강재 마킹 실증</h4>
+            <p style="font-size:13.5px;color:var(--text-dim);line-height:1.7;">현대중공업 및 삼성중공업 야드에서 전체마킹기를 사용하여 강재 표면에 가이드선 및 조립 마크를 대량 분할 인쇄한 실제 검증 사진입니다.</p>
+          </div>
+        </div>
+
+        <!-- Result 2 -->
+        <div class="card hoverable" style="overflow:hidden;box-shadow:var(--glow);">
+          <div style="width:100%;aspect-ratio:1.8/1;background:var(--bg-alt);display:flex;flex-direction:column;justify-content:center;align-items:center;border-bottom:2px dashed rgba(0,195,87,0.15);padding:24px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(0,195,87,0.4)" stroke-width="1.5" style="margin-bottom:10px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <span style="font-size:12px;color:var(--text-mute);font-weight:600;">실증 사진 삽입 예정 (공란)</span>
+          </div>
+          <div style="padding:24px;background:#fff;">
+            <h4 style="font-size:17px;font-weight:700;margin-bottom:8px;color:var(--main);">강재 ID 및 고선명 텍스트 각인</h4>
+            <p style="font-size:13.5px;color:var(--text-dim);line-height:1.7;">플레이트 측면과 중앙부에 강재 고유 번호(ID) 및 조립 지시 데이터를 대형 활자로 흔들림 없이 선명하게 각인하여 원거리 식별을 극대화합니다.</p>
+          </div>
+        </div>
+
+        <!-- Result 3 -->
+        <div class="card hoverable" style="overflow:hidden;box-shadow:var(--glow);">
+          <div style="width:100%;aspect-ratio:1.8/1;background:var(--bg-alt);display:flex;flex-direction:column;justify-content:center;align-items:center;border-bottom:2px dashed rgba(0,195,87,0.15);padding:24px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(0,195,87,0.4)" stroke-width="1.5" style="margin-bottom:10px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <span style="font-size:12px;color:var(--text-mute);font-weight:600;">실증 사진 삽입 예정 (공란)</span>
+          </div>
+          <div style="padding:24px;background:#fff;">
+            <h4 style="font-size:17px;font-weight:700;margin-bottom:8px;color:var(--main);">곡선 및 특수 기호 마킹 상세</h4>
+            <p style="font-size:13.5px;color:var(--text-dim);line-height:1.7;">피에조 노즐의 미세 토출 제어로 단순 선이나 글자뿐만 아니라 특수 기호, 조립용 사선, 둥근 곡선 가이드 라인까지 오차 없이 표현합니다.</p>
+          </div>
+        </div>
+
+        <!-- Result 4 -->
+        <div class="card hoverable" style="overflow:hidden;box-shadow:var(--glow);">
+          <div style="width:100%;aspect-ratio:1.8/1;background:var(--bg-alt);display:flex;flex-direction:column;justify-content:center;align-items:center;border-bottom:2px dashed rgba(0,195,87,0.15);padding:24px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(0,195,87,0.4)" stroke-width="1.5" style="margin-bottom:10px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <span style="font-size:12px;color:var(--text-mute);font-weight:600;">실증 사진 삽입 예정 (공란)</span>
+          </div>
+          <div style="padding:24px;background:#fff;">
+            <h4 style="font-size:17px;font-weight:700;margin-bottom:8px;color:var(--main);">현업 적용 초미세 최소 문자 마킹</h4>
+            <p style="font-size:13.5px;color:var(--text-dim);line-height:1.7;">조선 현업 표준에 부합하는 초미세 도트 조합 기술을 통해 매우 좁은 영역에서도 시안성이 높은 초소형(20mm 이하) 문자를 깨짐 없이 완벽하게 구현합니다.</p>
+          </div>
+        </div>
+
+        <!-- Result 5 -->
+        <div class="card hoverable" style="overflow:hidden;box-shadow:var(--glow);">
+          <div style="width:100%;aspect-ratio:1.8/1;background:var(--bg-alt);display:flex;flex-direction:column;justify-content:center;align-items:center;border-bottom:2px dashed rgba(0,195,87,0.15);padding:24px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(0,195,87,0.4)" stroke-width="1.5" style="margin-bottom:10px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <span style="font-size:12px;color:var(--text-mute);font-weight:600;">실증 사진 삽입 예정 (공란)</span>
+          </div>
+          <div style="padding:24px;background:#fff;">
+            <h4 style="font-size:17px;font-weight:700;margin-bottom:8px;color:var(--main);">야드 적치 강재의 기후 안정성 검증</h4>
+            <p style="font-size:13.5px;color:var(--text-dim);line-height:1.7;">마킹 가공 후 실외 조선 야드 환경에 장기간 적치(비, 눈, 자외선 노출)하거나 거친 물리적 마찰 이동을 거쳐도 각인된 정보가 그대로 유지됩니다.</p>
+          </div>
+        </div>
+
+        <!-- Result 6 -->
+        <div class="card hoverable" style="overflow:hidden;box-shadow:var(--glow);">
+          <div style="width:100%;aspect-ratio:1.8/1;background:var(--bg-alt);display:flex;flex-direction:column;justify-content:center;align-items:center;border-bottom:2px dashed rgba(0,195,87,0.15);padding:24px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(0,195,87,0.4)" stroke-width="1.5" style="margin-bottom:10px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <span style="font-size:12px;color:var(--text-mute);font-weight:600;">실증 사진 삽입 예정 (공란)</span>
+          </div>
+          <div style="padding:24px;background:#fff;">
+            <h4 style="font-size:17px;font-weight:700;margin-bottom:8px;color:var(--main);">지능형 AR-CODE 결과</h4>
+            <p style="font-size:13.5px;color:var(--text-dim);line-height:1.7;">증강현실(AR) 스캐닝 장비와 즉각 동기화되어 태블릿이나 스마트 글래스로 부재의 상세 3D 정보 및 조립 도면을 불러올 수 있는 디지털 마크입니다.</p>
+          </div>
+        </div>
+
+        <!-- Result 7 -->
+        <div class="card hoverable" style="overflow:hidden;box-shadow:var(--glow);">
+          <div style="width:100%;aspect-ratio:1.8/1;background:var(--bg-alt);display:flex;flex-direction:column;justify-content:center;align-items:center;border-bottom:2px dashed rgba(0,195,87,0.15);padding:24px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(0,195,87,0.4)" stroke-width="1.5" style="margin-bottom:10px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <span style="font-size:12px;color:var(--text-mute);font-weight:600;">실증 사진 삽입 예정 (공란)</span>
+          </div>
+          <div style="padding:24px;background:#fff;">
+            <h4 style="font-size:17px;font-weight:700;margin-bottom:8px;color:var(--main);">갠트리 이동식 QR-CODE 인쇄 테스트</h4>
+            <p style="font-size:13.5px;color:var(--text-dim);line-height:1.7;">삼성중공업 판넬라인 이동형 마킹장비를 활용해 강판 위에 대형 2D QR-CODE를 인쇄한 모습으로, 사내 물류 정보 네트워크와 실시간 연동됩니다.</p>
+          </div>
+        </div>
+
+        <!-- Result 8 -->
+        <div class="card hoverable" style="overflow:hidden;box-shadow:var(--glow);">
+          <div style="width:100%;aspect-ratio:1.8/1;background:var(--bg-alt);display:flex;flex-direction:column;justify-content:center;align-items:center;border-bottom:2px dashed rgba(0,195,87,0.15);padding:24px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(0,195,87,0.4)" stroke-width="1.5" style="margin-bottom:10px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <span style="font-size:12px;color:var(--text-mute);font-weight:600;">실증 사진 삽입 예정 (공란)</span>
+          </div>
+          <div style="padding:24px;background:#fff;">
+            <h4 style="font-size:17px;font-weight:700;margin-bottom:8px;color:var(--main);">소부재 분할 정밀 마킹 및 라벨링</h4>
+            <p style="font-size:13.5px;color:var(--text-dim);line-height:1.7;">대형 판재에서 분할 절단되는 다량의 소부재들 각각의 중앙부에 정확한 고해상도 식별 텍스트를 인쇄하여 조립 야드에서의 정렬 및 배치 오류를 원천 차단합니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECORDS -->
+  <section id="records" class="bg-alt">
+    <style>
+      @keyframes marqueeScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .marquee-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        padding: 10px 0 30px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid var(--line-soft);
+      }
+      .marquee-track {
+        display: flex;
+        width: max-content;
+        animation: marqueeScroll 28s linear infinite;
+      }
+      .marquee-track:hover {
+        animation-play-state: paused;
+      }
+      .logo-item {
+        flex-shrink: 0;
+        width: 184px;
+        height: 64px;
+        margin: 0 12px;
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 3px 10px rgba(0, 195, 87, 0.03);
+      }
+      .logo-item-title {
+        font-size: 13.5px;
+        font-weight: 700;
+        color: var(--main);
+        text-align: center;
+        line-height: 1.25;
+      }
+      .logo-item-sub {
+        font-size: 9.5px;
+        color: var(--text-mute);
+        font-weight: 500;
+        margin-top: 4px;
+      }
+    </style>
+
+    <div class="container">
+      <div class="section-head center" style="margin-bottom: 32px;">
+        <span class="eyebrow">Supply Track Record</span>
+        <h2 class="h2">국내외 주요 조선소 납품 및 가동 실적</h2>
+        <p class="section-sub">지난 15년 동안 HD현대중공업, 삼성중공업, 한화오션 등 글로벌 1위 조선사들의 스마트 마킹 라인을 구축해 왔습니다.</p>
+      </div>
+
+      <!-- Moving Logos Banner -->
+      <div class="marquee-container">
+        <div class="marquee-track">
+          <!-- Group 1 -->
+          <div class="logo-item">
+            <img src="images/logos/logo_01.png" alt="HD현대중공업" style="max-height:22px;max-width:85%;object-fit:contain;display:block;margin-bottom:2px;">
+            <span class="logo-item-sub">HD현대중공업 (울산)</span>
+          </div>
+          <div class="logo-item">
+            <img src="images/logos/logo_02.png" alt="삼성중공업" style="max-height:22px;max-width:85%;object-fit:contain;display:block;margin-bottom:2px;">
+            <span class="logo-item-sub">삼성중공업 (거제)</span>
+          </div>
+          <div class="logo-item">
+            <img src="images/logos/logo_03.png" alt="현대삼호중공업" style="max-height:22px;max-width:85%;object-fit:contain;display:block;margin-bottom:2px;">
+            <span class="logo-item-sub">현대삼호중공업</span>
+          </div>
+          <div class="logo-item">
+            <img src="images/logos/logo_04.png" alt="사우디아라비아 IMI" style="max-height:22px;max-width:85%;object-fit:contain;display:block;margin-bottom:2px;">
+            <span class="logo-item-sub">사우디 IMI (아람코)</span>
+          </div>
+          <div class="logo-item">
+            <img src="images/logos/logo_05.png" alt="중국 한화해양공정" style="max-height:22px;max-width:85%;object-fit:contain;display:block;margin-bottom:2px;">
+            <span class="logo-item-sub">한화해양공정 (산동)</span>
+          </div>
+          <div class="logo-item">
+            <img src="images/logos/logo_01.png" alt="HD현대중공업" style="max-height:22px;max-width:85%;object-fit:contain;display:block;margin-bottom:2px;">
+            <span class="logo-item-sub">HD현대중공업 (군산)</span>
+          </div>
+          
+          <!-- Group 2 (Seamless loop duplicate) -->
+          <div class="logo-item">
+            <img src="images/logos/logo_01.png" alt="HD현대중공업" style="max-height:22px;max-width:85%;object-fit:contain;display:block;margin-bottom:2px;">
+            <span class="logo-item-sub">HD현대중공업 (울산)</span>
+          </div>
+          <div class="logo-item">
+            <img src="images/logos/logo_02.png" alt="삼성중공업" style="max-height:22px;max-width:85%;object-fit:contain;display:block;margin-bottom:2px;">
+            <span class="logo-item-sub">삼성중공업 (거제)</span>
+          </div>
+          <div class="logo-item">
+            <img src="images/logos/logo_03.png" alt="현대삼호중공업" style="max-height:22px;max-width:85%;object-fit:contain;display:block;margin-bottom:2px;">
+            <span class="logo-item-sub">현대삼호중공업</span>
+          </div>
+          <div class="logo-item">
+            <img src="images/logos/logo_04.png" alt="사우디아라비아 IMI" style="max-height:22px;max-width:85%;object-fit:contain;display:block;margin-bottom:2px;">
+            <span class="logo-item-sub">사우디 IMI (아람코)</span>
+          </div>
+          <div class="logo-item">
+            <img src="images/logos/logo_05.png" alt="중국 한화해양공정" style="max-height:22px;max-width:85%;object-fit:contain;display:block;margin-bottom:2px;">
+            <span class="logo-item-sub">한화해양공정 (산동)</span>
+          </div>
+          <div class="logo-item">
+            <img src="images/logos/logo_01.png" alt="HD현대중공업" style="max-height:22px;max-width:85%;object-fit:contain;display:block;margin-bottom:2px;">
+            <span class="logo-item-sub">HD현대중공업 (군산)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Records Table -->
+      <div style="overflow-x:auto;" class="reveal">
+        <table class="record-table">
+          <thead>
+            <tr>
+              <th>설치 연도</th>
+              <th>주요 납품처 / 조선소</th>
+              <th>도입 장비 구분</th>
+              <th>가동 현황 및 비고</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-family:var(--ff-mono);">2012년</td>
+              <td><strong>현대삼호중공업</strong> 1호기</td>
+              <td>고해상도 전처리 문자마킹기 SET</td>
+              <td>정상 상용 가동 완료</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--ff-mono);">2012년</td>
+              <td><strong>현대삼호중공업</strong> 2호기</td>
+              <td>고해상도 전처리 문자마킹기 SET</td>
+              <td>정상 상용 가동 완료</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--ff-mono);">2016년</td>
+              <td><strong>현대중공업</strong> 1야드 1호기</td>
+              <td>고해상도 전처리 문자마킹기 SET</td>
+              <td>정상 상용 가동 완료</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--ff-mono);">2018년</td>
+              <td><strong>현대중공업</strong> 2야드 1호기</td>
+              <td>고해상도 전처리 문자마킹기 SET</td>
+              <td>정상 상용 가동 완료</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--ff-mono);">2019년</td>
+              <td><strong>삼성중공업</strong> 3호기</td>
+              <td>고해상도 전처리 문자마킹기 SET</td>
+              <td>정상 상용 가동 완료</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--ff-mono);">2020년</td>
+              <td><strong>삼성중공업</strong> 4호기</td>
+              <td>고해상도 전처리 문자마킹기 SET</td>
+              <td>정상 상용 가동 완료</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--ff-mono);">2021년</td>
+              <td><strong>현대중공업</strong> 2야드 2호기</td>
+              <td>고해상도 전처리 ID 마킹기 SET</td>
+              <td>중앙 ID 특화 마킹기 운용 중</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--ff-mono);">2021년</td>
+              <td><strong>현대중공업</strong> 1야드 3호기</td>
+              <td>고해상도 전처리 문자마킹기 SET</td>
+              <td>정상 상용 가동 완료</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--ff-mono);">2023년</td>
+              <td><strong>현대중공업</strong> 1야드 4호기</td>
+              <td>고해상도 전처리 문자마킹기 SET</td>
+              <td>정상 상용 가동 완료</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--ff-mono);">2022년</td>
+              <td><strong>현대중공업 군산조선소</strong> 1호기</td>
+              <td>고해상도 전처리 문자마킹기 SET</td>
+              <td>군산 재가동 생산 라인 배치 가동</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--ff-mono);">2022년</td>
+              <td><strong>현대중공업 군산조선소</strong> 2호기</td>
+              <td>고해상도 전처리 문자마킹기 SET</td>
+              <td>군산 재가동 생산 라인 배치 가동</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--ff-mono);">2024년 10월</td>
+              <td><strong>사우디 아람코 IMI 조선소</strong> 1호기</td>
+              <td>고해상도 전처리 문자마킹기 SET</td>
+              <td>현지 야드 설치 및 최종 양산 테스트 완료</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--ff-mono);">2024년 10월</td>
+              <td><strong>사우디 아람코 IMI 조선소</strong> 2호기</td>
+              <td>고해상도 전처리 문자마킹기 SET</td>
+              <td>현지 야드 설치 및 최종 양산 테스트 완료</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--ff-mono);">2025년</td>
+              <td><strong>삼성중공업</strong> 판넬라인</td>
+              <td>주판 라인마킹 &amp; 라벨링 이동식 마킹기</td>
+              <td>판넬조립 스마트 라인 주행 운용 중</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--ff-mono);">2026년</td>
+              <td><strong>중국 한화해양공정(산동)유한공사</strong> 1호기</td>
+              <td>고해상도 전처리 문자마킹기 SET</td>
+              <td>정상 상용 가동 완료</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div style="font-family:var(--ff-mono);font-size:14px;color:var(--main);margin-top:36px;text-align:right;font-weight:700;letter-spacing:-.01em;">
+        ※ 그 외 조선 전처리 문자마킹장비 오버홀(Overhaul) 공사 및 리트로핏(Retrofit) 개조 실적 다수 보유
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="bg-alt">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:flex-start;">
+        <div>
+          <span class="eyebrow">Get In Touch</span>
+          <h2 class="h2" style="margin-bottom:20px;">제품 도입 및 견적 문의</h2>
+          <p class="body-text" style="margin-bottom:30px;">
+            씨에스캠의 고해상도 문자마킹장비는 선박 건조 전처리 라인의 생산 효율을 획기적으로 향상시킵니다. 장비 도입 단가, 헤드 개조 사양, 유틸리티 구축 등에 관해 영업 엔지니어가 상세히 안내해 드립니다.
+          </p>
+          <div style="font-size:15px;color:var(--text-dim);">
+            <div style="margin-bottom:12px;"><strong>본사 및 마킹 기술본부 주소</strong></div>
+            <p style="font-family:var(--ff-mono);margin-bottom:20px;">전남광주특별시 광산구 평동산단로 239-15 (옥동)</p>
+            <div><strong>기술영업 대표전화</strong></div>
+            <p style="font-size:22px;font-weight:700;color:var(--cscam-blue);font-family:var(--ff-mono);margin-bottom:20px;">062-946-1900</p>
+            <div><strong>기술영업 담당 이메일</strong></div>
+            <p style="font-size:18px;font-weight:700;color:var(--cscam-blue);font-family:var(--ff-mono);"><a href="mailto:skbang@cscam.co.kr" style="color:inherit;text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">skbang@cscam.co.kr</a></p>
+          </div>
+        </div>
+        <div class="card" style="padding:40px;background:#fff;box-shadow:var(--glow);">
+          <form onsubmit="alert('준비 중인 상담 폼입니다. 우측 하단의 실시간 챗봇을 이용해 문의를 등록해 주세요!'); return false;">
+            <div class="form-group">
+              <label for="c_name">담당자 성함 / 회사명</label>
+              <input type="text" id="c_name" class="form-control" placeholder="성함과 소속 회사명을 함께 적어주세요" required>
+            </div>
+            <div class="form-group">
+              <label for="c_contact">연락처 (전화번호 또는 메일)</label>
+              <input type="text" id="c_contact" class="form-control" placeholder="연락받으실 연락처를 입력해 주세요" required>
+            </div>
+            <div class="form-group">
+              <label for="c_message">문의 요구사항 상세</label>
+              <textarea id="c_message" class="form-control" placeholder="도입 검토 중인 장비 구분(고정식/이동식), 주요 강재 사양 등을 편하게 기재해 주세요" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;margin-top:10px;">상담 문의 접수</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer style="background:#0d1e3d;color:#8fa3c3;padding:60px 0 30px;border-top:1px solid var(--line-soft);">
+  <div style="max-width:1320px;margin:0 auto;padding:0 32px;">
+    <div class="footer-columns" style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.06);">
+      <div style="color:#c4d1e6;">
+        <div style="font-weight:700;font-size:16px;color:#fff;letter-spacing:.01em;margin-bottom:4px;">씨에스캠주식회사</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-style:italic;font-size:15px;color:var(--accent);margin-bottom:16px;">MARKING MACHINE</div>
+        <p style="font-size:13px;line-height:1.7;max-width:380px;">레이저 제어 기술 기반의 피에조 고해상도 문자마킹기 및 주판 라인마킹 시스템을 자체 개발·공급합니다.</p>
+      </div>
+      <div>
+        <h6 style="color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;letter-spacing:.05em;margin-bottom:16px;">장비 구분</h6>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="margin-bottom:8px;"><a href="#stationary" style="font-size:13px;color:#8fa3c3;text-decoration:none;">고정식 전체 마킹기</a></li>
+          <li style="margin-bottom:8px;"><a href="#stationary" style="font-size:13px;color:#8fa3c3;text-decoration:none;">고정식 ID 마킹기</a></li>
+          <li style="margin-bottom:8px;"><a href="#mobile" style="font-size:13px;color:#8fa3c3;text-decoration:none;">이동식 판넬 마킹기</a></li>
+        </ul>
+      </div>
+      <div>
+        <h6 style="color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;letter-spacing:.05em;margin-bottom:16px;">소프트웨어</h6>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="margin-bottom:8px;"><a href="#software" style="font-size:13px;color:#8fa3c3;text-decoration:none;">CAD Data Server</a></li>
+          <li style="margin-bottom:8px;"><a href="#software" style="font-size:13px;color:#8fa3c3;text-decoration:none;">IMD Data Server</a></li>
+        </ul>
+        <h6 style="color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;letter-spacing:.05em;margin:16px 0;">기술자료</h6>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="margin-bottom:8px;"><a href="#concept" style="font-size:13px;color:#8fa3c3;text-decoration:none;">Piezo 압전 잉크젯 제어</a></li>
+          <li style="margin-bottom:8px;"><a href="#specifications" style="font-size:13px;color:#8fa3c3;text-decoration:none;">기계 &amp; 전기 유틸리티 제원</a></li>
+        </ul>
+      </div>
+      <div>
+        <h6 style="color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;letter-spacing:.05em;margin-bottom:16px;">홍보 및 다운로드</h6>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="margin-bottom:8px;"><a href="#gallery" style="font-size:13px;color:#8fa3c3;text-decoration:none;">실제 마킹 사례 (갤러리)</a></li>
+          <li style="margin-bottom:8px;"><a href="#records" style="font-size:13px;color:#8fa3c3;text-decoration:none;">납품 설치 실적</a></li>
+          <li style="margin-bottom:8px;"><a href="#contact" style="font-size:13px;color:#8fa3c3;text-decoration:none;">카탈로그 문의</a></li>
+          <li style="margin-bottom:8px;"><a href="#contact" style="font-size:13px;color:#8fa3c3;text-decoration:none;">제품(견적) 문의</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:12px;color:#6b7a94;flex-wrap:wrap;gap:12px;">
+      <div>© 2026 씨에스캠주식회사 (CSCAM Co., Ltd.) — Machine Division. All Rights Reserved.</div>
+      <div style="font-family:'JetBrains Mono',monospace;letter-spacing:.06em;">본사 · 전남광주특별시 광산구 평동산단로 239-15 · 062-946-1900</div>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP BUTTON -->
+<style>
+  .top-btn-marking {
+    position: fixed;
+    right: 36px;
+    bottom: 104px;
+    z-index: 190;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--accent);
+    border: 1px solid var(--line-soft);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 4px 16px rgba(0,195,87,.12);
+    cursor: pointer;
+    transition: all .3s ease;
+  }
+  .top-btn-marking:hover {
+    background: var(--bg-alt);
+    transform: translateY(-3px);
+  }
+</style>
+<button type="button" class="top-btn-marking" onclick="scrollToTop()" aria-label="맨 위로">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+
+<!-- AI Chatbot Floating Widget (원래의 정적 UI 복원 및 대화식 기능 통합) -->
+<style>
+  @keyframes chatPulse {
+    0% { transform: scale(1); opacity: 0.4; }
+    50% { transform: scale(1.15); opacity: 0; }
+    100% { transform: scale(1); opacity: 0; }
+  }
+  @keyframes dots {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+  .loading-dots span {
+    animation: dots 1.4s infinite;
+  }
+  .chatbot-opt-btn {
+    text-align: left;
+    font-size: 12.5px;
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    background: var(--bg-alt);
+    color: var(--main);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    width: 100%;
+    box-shadow: 0 1px 2px rgba(0,195,87,0.05);
+  }
+  .chatbot-opt-btn:hover {
+    background: var(--bg-deep);
+    border-color: var(--accent);
+  }
+  .chatbot-opt-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    background: #f1f5f9;
+    border-color: #e2e6ec;
+    color: #94a3b8;
+    box-shadow: none;
+  }
+</style>
+
+<div id="ai-chatbot-widget" style="font-family:'Noto Sans KR',sans-serif;">
+  <!-- Chatbot Floating Button (원래 디자인) -->
+  <button id="chatbot-toggle-btn" type="button" style="position:fixed;right:28px;bottom:28px;z-index:200;width:60px;height:60px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,195,87,.35);border:none;cursor:pointer;outline:none;">
+    <span id="chatbot-badge" style="position:absolute;top:-4px;right:-4px;width:18px;height:18px;border-radius:50%;background:var(--cscam-blue);color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center;border:2px solid #fff;">1</span>
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+  </button>
+
+  <!-- Chat Window Panel (원래 정적 UI 프레임 복원) -->
+  <div id="chatbot-panel" style="position:fixed;right:28px;bottom:100px;z-index:200;width:340px;max-width:calc(100vw - 40px);height:460px;max-height:calc(100vh - 160px);background:#fff;border:1px solid #e2e6ec;border-radius:12px;box-shadow:0 16px 40px rgba(0,195,87,.15);display:none;flex-direction:column;overflow:hidden;transition:all 0.25s ease;transform:translateY(15px);opacity:0;">
+    <!-- Chat Header -->
+    <div style="background:var(--accent);color:#fff;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.16);display:grid;place-items:center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+        </div>
+        <div>
+          <h5 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;margin:0;">CSCAM 문의하기</h5>
+          <span style="display:block;font-size:10px;color:#d0fbe2;font-family:'JetBrains Mono',monospace;letter-spacing:.06em;margin-top:2px;">MARKING MC 상담 챗봇</span>
+        </div>
+      </div>
+      <button id="chatbot-close-btn" type="button" style="width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:#fff;background:none;border:none;cursor:pointer;outline:none;font-size:13px;">✕</button>
+    </div>
+    
+    <!-- Chat Body Messages -->
+    <div id="chatbot-messages" style="flex:1;overflow-y:auto;padding:18px;background:#fafbfc;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth;">
+      <!-- Welcome card and dialog steps will be dynamically inserted here -->
+    </div>
+    
+    <!-- Chat Input Form -->
+    <form id="chatbot-input-form" onsubmit="handleChatbotSubmit(event)" style="padding:12px 14px;border-top:1px solid #e2e6ec;background:#fff;display:flex;gap:8px;margin:0;align-items:center;flex-shrink:0;">
+      <input id="chatbot-input-field" type="text" placeholder="메시지를 입력하세요 (준비 중)" disabled style="flex:1;border:1px solid #e2e6ec;border-radius:20px;padding:10px 16px;font-size:13px;outline:none;color:#424242;">
+      <button id="chatbot-submit-btn" type="submit" style="width:38px;height:38px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;flex-shrink:0;border:none;cursor:pointer;outline:none;" disabled style="opacity:0.6;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+      </button>
+    </form>
+    
+    <!-- Footer -->
+    <div style="padding:6px 14px 10px;font-size:10px;color:#757575;font-family:'JetBrains Mono',monospace;text-align:center;background:#fff;flex-shrink:0;border-top:1px solid #f2f5f9;">POWERED BY CSCAM · AI Q&amp;A LEARNING IN PROGRESS</div>
+  </div>
+</div>
+
+<script>
+function toggleDrawer() {
+  document.getElementById('drawer').classList.toggle('open');
+}
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+  document.body.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+(function() {
+  var toggleBtn = document.getElementById('chatbot-toggle-btn');
+  var badge = document.getElementById('chatbot-badge');
+  var panel = document.getElementById('chatbot-panel');
+  var closeBtn = document.getElementById('chatbot-close-btn');
+  var msgArea = document.getElementById('chatbot-messages');
+  var inputField = document.getElementById('chatbot-input-field');
+  var submitBtn = document.getElementById('chatbot-submit-btn');
+  
+  // Conversation state
+  var chatState = {
+    step: 'init', // 'init', 'name', 'contact', 'message', 'complete'
+    category: '',
+    name: '',
+    contact: '',
+    message: ''
+  };
+
+  // Toggle panel
+  toggleBtn.addEventListener('click', function() {
+    badge.style.display = 'none'; // Hide notification badge on first click
+    if (panel.style.display === 'none' || !panel.style.display) {
+      panel.style.display = 'flex';
+      setTimeout(function() {
+        panel.style.transform = 'translateY(0)';
+        panel.style.opacity = '1';
+      }, 10);
+    } else {
+      panel.style.transform = 'translateY(15px)';
+      panel.style.opacity = '0';
+      setTimeout(function() {
+        panel.style.display = 'none';
+      }, 250);
+    }
+  });
+
+  // Close panel
+  closeBtn.addEventListener('click', function() {
+    panel.style.transform = 'translateY(15px)';
+    panel.style.opacity = '0';
+    setTimeout(function() {
+      panel.style.display = 'none';
+    }, 250);
+  });
+
+  // Render Bot message
+  function appendBotMsg(htmlContent) {
+    var html = '<div class="bot-msg-wrapper" style="display:flex;gap:8px;max-width:90%;margin-bottom:12px;">' +
+      '<div style="width:28px;height:28px;border-radius:50%;background:#eaf3fc;color:var(--accent);display:grid;place-items:center;flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4M8 16h.01M16 16h.01"></path></svg></div>' +
+      '<div style="max-width:calc(100% - 36px);padding:10px 14px;border-radius:2px 10px 10px 10px;font-size:13px;line-height:1.5;background:#fff;border:1px solid #e2e6ec;color:#424242;word-break:break-all;">' +
+        htmlContent +
+      '</div>' +
+    '</div>';
+    msgArea.insertAdjacentHTML('beforeend', html);
+    msgArea.scrollTop = msgArea.scrollHeight;
+  }
+
+  // Render User message
+  function appendUserMsg(textContent) {
+    var html = '<div class="user-msg-wrapper" style="display:flex;justify-content:flex-end;width:100%;margin-bottom:12px;">' +
+      '<div style="max-width:80%;padding:10px 14px;border-radius:10px 2px 10px 10px;font-size:13px;line-height:1.5;background:var(--accent);color:#fff;word-break:break-all;text-align:left;">' +
+        textContent +
+      '</div>' +
+    '</div>';
+    msgArea.insertAdjacentHTML('beforeend', html);
+    msgArea.scrollTop = msgArea.scrollHeight;
+  }
+
+  // Render Typing Indicator
+  function appendTyping() {
+    var id = 'typing-' + Date.now();
+    var html = '<div id="' + id + '" style="display:flex;gap:8px;max-width:90%;margin-bottom:12px;">' +
+      '<div style="width:28px;height:28px;border-radius:50%;background:#eaf3fc;color:var(--accent);display:grid;place-items:center;flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4M8 16h.01M16 16h.01"></path></svg></div>' +
+      '<div style="padding:10px 14px;border-radius:2px 10px 10px 10px;font-size:13px;background:#fff;border:1px solid #e2e6ec;color:#888;display:flex;align-items:center;gap:3px;">' +
+        '입력 중<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span>' +
+      '</div>' +
+    '</div>';
+    msgArea.insertAdjacentHTML('beforeend', html);
+    msgArea.scrollTop = msgArea.scrollHeight;
+    return id;
+  }
+
+  function removeTyping(id) {
+    var el = document.getElementById(id);
+    if (el) el.remove();
+  }
+
+  // Initial welcome screen matching original UI
+  function appendInitialWelcome() {
+    var welcomeHtml = '안녕하세요! 씨에스캠 문자마킹기(Marking Machine) 상담 챗봇입니다.<br>아래 항목을 선택하거나 궁금하신 점을 입력해 주세요.' +
+      '<div style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">' +
+        '<button type="button" class="chatbot-opt-btn" onclick="selectChatbotOption(1, \'고해상도 문자마킹기 스펙 문의\')">고해상도 문자마킹기 스펙 문의</button>' +
+        '<button type="button" class="chatbot-opt-btn" onclick="selectChatbotOption(2, \'구매 견적 / 데모 시연 신청\')">구매 견적 / 데모 시연 신청</button>' +
+        '<button type="button" class="chatbot-opt-btn" onclick="selectChatbotOption(3, \'담당자 연결 (062-946-1900)\')">담당자 연결 (062-946-1900)</button>' +
+      '</div>';
+    appendBotMsg(welcomeHtml);
+  }
+
+  // Handle option selection
+  window.selectChatbotOption = function(optionIndex, text) {
+    appendUserMsg(text);
+    
+    // Disable all options buttons to prevent re-click
+    var buttons = document.querySelectorAll('.chatbot-opt-btn');
+    buttons.forEach(function(b) { b.disabled = true; });
+
+    var typingId = appendTyping();
+
+    setTimeout(function() {
+      removeTyping(typingId);
+      if (optionIndex === 1 || optionIndex === 2) {
+        chatState.category = (optionIndex === 1) ? '문자마킹기 스펙 문의' : '문자마킹기 견적 및 데모 신청';
+        chatState.step = 'name';
+        
+        appendBotMsg('선택해 주셔서 감사합니다! 관련 상세 제품 카탈로그 및 도입 상담 안내를 위해 먼저 고객님의 <strong>성함(회사명)</strong>을 아래 입력창에 작성해 주세요.');
+        
+        // Enable input field
+        inputField.disabled = false;
+        inputField.placeholder = '성함 또는 회사명을 입력하세요...';
+        inputField.focus();
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+      } else if (optionIndex === 3) {
+        chatState.step = 'complete';
+        appendBotMsg('씨에스캠 마킹기 사업부 직통 전화 및 메일입니다.<br><br>• <strong>대표 전화</strong>: 062-946-1900<br>• <strong>상담 메일</strong>: info@cscam.co.kr<br>• <strong>상담 시간</strong>: 평일 08:30 ~ 17:30 (토/일/공휴일 휴무)<br><br>전화 또는 이메일로 메일 주소를 남겨 주시면 전담 엔지니어가 접수하여 견적 상담을 지원해 드리겠습니다.');
+        appendRestartButton();
+      }
+    }, 600);
+  };
+
+  // Submit contact data step-by-step
+  window.handleChatbotSubmit = function(event) {
+    event.preventDefault();
+    var query = inputField.value.trim();
+    if (!query) return;
+
+    inputField.value = '';
+    appendUserMsg(query);
+
+    var typingId = appendTyping();
+
+    setTimeout(function() {
+      removeTyping(typingId);
+
+      if (chatState.step === 'name') {
+        chatState.name = query;
+        chatState.step = 'contact';
+        
+        appendBotMsg('감사합니다, ' + query + '님!<br>관련 기술 사양서와 제안 자료를 전송받으실 <strong>연락처(전화번호 또는 메일 주소)</strong>를 입력해 주세요.');
+        inputField.placeholder = '전화번호 또는 이메일을 입력하세요...';
+        inputField.focus();
+      } else if (chatState.step === 'contact') {
+        chatState.contact = query;
+        chatState.step = 'message';
+        
+        appendBotMsg('연락처가 등록되었습니다.<br>마지막으로 현재 검토 중인 마킹 대상(철판, 고무, 목재 등) 또는 특별 사양 등 <strong>상세한 문의사항</strong>이 있으시면 입력해 주세요. (없으시다면 "없음" 입력)');
+        inputField.placeholder = '상세 요구사항을 입력하세요...';
+        inputField.focus();
+      } else if (chatState.step === 'message') {
+        chatState.message = query;
+        chatState.step = 'complete';
+        
+        // Save to localStorage
+        saveChatbotInquiry();
+
+        appendBotMsg('소중한 상담 요청이 접수되었습니다. 문자마킹기 담당 기술 영업 대표에게 관련 내용이 인계됩니다.<br><br>' +
+                     '• <strong>문의 구분</strong>: ' + chatState.category + '<br>' +
+                     '• <strong>성함/회사</strong>: ' + chatState.name + '<br>' +
+                     '• <strong>연락처</strong>: ' + chatState.contact + '<br>' +
+                     '• <strong>문의 내용</strong>: ' + chatState.message + '<br><br>' +
+                     '검토 후 평일 기준 24시간 이내에 메일 또는 유선 연락드리겠습니다.');
+        
+        // Disable input
+        inputField.disabled = true;
+        inputField.placeholder = '접수가 성공적으로 완료되었습니다.';
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.6';
+
+        appendRestartButton();
+      }
+    }, 700);
+  };
+
+  // Save inquiry in localStorage
+  function saveChatbotInquiry() {
+    try {
+      var dataList = JSON.parse(localStorage.getItem('cscam_inquiries') || '[]');
+      dataList.push({
+        date: new Date().toLocaleString('ko-KR'),
+        category: chatState.category,
+        name: chatState.name,
+        contact: chatState.contact,
+        message: chatState.message
+      });
+      localStorage.setItem('cscam_inquiries', JSON.stringify(dataList));
+      console.log('CSCAM Marking Inquiry Saved:', chatState);
+    } catch (e) {
+      console.error('Failed to save inquiry data', e);
+    }
+  }
+
+  // Restart dialogue
+  window.restartChatbot = function() {
+    chatState.step = 'init';
+    chatState.category = '';
+    chatState.name = '';
+    chatState.contact = '';
+    chatState.message = '';
+    
+    msgArea.innerHTML = '';
+    appendInitialWelcome();
+    
+    inputField.disabled = true;
+    inputField.placeholder = '메시지를 입력하세요 (준비 중)';
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = '0.6';
+  };
+
+  function appendRestartButton() {
+    var html = '<div style="display:flex;justify-content:center;margin-top:10px;width:100%;">' +
+        '<button type="button" class="chatbot-opt-btn" onclick="restartChatbot()" style="text-align:center;font-weight:700;">처음 단계로 돌아가기</button>' +
+      '</div>';
+    msgArea.insertAdjacentHTML('beforeend', html);
+    msgArea.scrollTop = msgArea.scrollHeight;
+  }
+
+  // Load welcome bubble
+  appendInitialWelcome();
+})();
+
+// Dynamic Family Site Link Auto-Toggler (Local vs. Deployed)
+document.addEventListener("DOMContentLoaded", function() {
+  const isLocal = location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.protocol === "file:";
+  const path = location.pathname;
+  
+  // Find GNB family links
+  const familyLinks = document.querySelectorAll(".family-bar-nav a, .drawer a");
+  
+  familyLinks.forEach(link => {
+    const text = link.textContent.trim().toUpperCase();
+    if (!text.includes("3D PRINTER") && !text.includes("LASER") && !text.includes("TEXTURING") && !text.includes("ENGRAVING") && !text.includes("MARKING")) {
+      return;
+    }
+    
+    const isAt3dp = path.includes("3dprinter");
+    const isAtEngraving = path.includes("engraving");
+    const isAtMarking = path.includes("marking");
+    
+    if (text.includes("3D PRINTER")) {
+      if (isAt3dp) {
+        link.href = "#heroSection";
+      } else {
+        link.href = isLocal ? "../../3dprinter/index.html" : "https://kookai2026.github.io/cscam-3dprinter/sites/3dprinter/";
+      }
+    } else if (text.includes("LASER") || text.includes("TEXTURING") || text.includes("ENGRAVING")) {
+      if (isAtEngraving) {
+        link.href = "#hero";
+      } else if (isAt3dp) {
+        link.href = isLocal ? "../machine/engraving/index.html" : "https://kookai2026.github.io/cscam-engraving/";
+      } else {
+        link.href = isLocal ? "../engraving/index.html" : "https://kookai2026.github.io/cscam-engraving/";
+      }
+    } else if (text.includes("MARKING")) {
+      if (isAtMarking) {
+        link.href = "#hero";
+      } else if (isAt3dp) {
+        link.href = isLocal ? "../machine/marking/index.html" : "https://kookai2026.github.io/cscam-marking/";
+      } else {
+        link.href = isLocal ? "../marking/index.html" : "https://kookai2026.github.io/cscam-marking/";
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>
