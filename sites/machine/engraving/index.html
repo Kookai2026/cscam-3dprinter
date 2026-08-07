@@ -1241,9 +1241,8 @@ if('IntersectionObserver' in window){
   appendInitialWelcome();
 })();
 
-// Dynamic Family Site Link Auto-Toggler (Local vs. Deployed)
+// Dynamic Family Site Link Auto-Toggler
 document.addEventListener("DOMContentLoaded", function() {
-  const isLocal = location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.protocol === "file:";
   const path = location.pathname;
   
   // Find GNB family links
@@ -1263,23 +1262,23 @@ document.addEventListener("DOMContentLoaded", function() {
       if (isAt3dp) {
         link.href = "#heroSection";
       } else {
-        link.href = isLocal ? "../../3dprinter/index.html" : "https://kookai2026.github.io/cscam-3dprinter/sites/3dprinter/";
+        link.href = "../../3dprinter/index.html";
       }
     } else if (text.includes("LASER") || text.includes("TEXTURING") || text.includes("ENGRAVING")) {
       if (isAtEngraving) {
         link.href = "#hero";
       } else if (isAt3dp) {
-        link.href = isLocal ? "../machine/engraving/index.html" : "https://kookai2026.github.io/cscam-engraving/";
+        link.href = "../machine/engraving/index.html";
       } else {
-        link.href = isLocal ? "../engraving/index.html" : "https://kookai2026.github.io/cscam-engraving/";
+        link.href = "../engraving/index.html";
       }
     } else if (text.includes("MARKING")) {
       if (isAtMarking) {
         link.href = "#hero";
       } else if (isAt3dp) {
-        link.href = isLocal ? "../machine/marking/index.html" : "https://kookai2026.github.io/cscam-marking/";
+        link.href = "../machine/marking/index.html";
       } else {
-        link.href = isLocal ? "../marking/index.html" : "https://kookai2026.github.io/cscam-marking/";
+        link.href = "../marking/index.html";
       }
     }
   });
