@@ -90,10 +90,11 @@
     /* Real mobile styling & preview mode styling */
     @media (max-width: 992px) {
       #preview-toolbar, #preview-spacer { display: none !important; }
-      header { top: 0 !important; height: 64px !important; }
-      header > div { height: 64px !important; padding: 0 16px !important; }
+      header { top: 0 !important; }
+      header .bar-main, header > div:last-of-type { height: 64px !important; padding: 0 16px !important; }
       .desktop-nav { display: none !important; }
       .mobile-menu-btn { display: flex !important; }
+      .family-bar-inner { justify-content: flex-start !important; padding: 0 16px !important; }
       
       /* Section padding overrides */
       section { padding: 60px 0 !important; }
@@ -197,6 +198,16 @@
     .mobile-preview-active .hero-links { flex-direction: column !important; align-items: stretch !important; }
     .mobile-preview-active .spec-modal-box { width: 92% !important; max-height: 85% !important; padding: 24px !important; }
     .mobile-preview-active #heroSection > div > div > div:last-child:not(.hero-marquee) { display: none !important; }
+    /* Family Bar (CSCAM 사업부 전환) */
+    .family-bar{background:#05080d;border-bottom:1px solid rgba(255,255,255,.06);}
+    .family-bar-inner{max-width:1320px;margin:0 auto;padding:0 24px;height:32px;display:flex;align-items:center;justify-content:flex-end;gap:2px;overflow-x:auto;scrollbar-width:none;}
+    .family-bar-inner::-webkit-scrollbar{display:none;}
+    .family-bar-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.14em;color:#5b6b85;margin-right:auto;white-space:nowrap;}
+    .family-bar-nav{display:flex;gap:2px;white-space:nowrap;}
+    .family-bar-nav a,.family-bar-nav span{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.02em;padding:6px 12px;border-radius:4px;color:#8b9bb5;transition:all .2s;}
+    .family-bar-nav a:hover{color:#fff;background:rgba(255,255,255,.08);}
+    .family-bar-nav a.active{color:#fff;background:#1e5aa8;}
+    .family-bar-nav span.disabled{color:#3a4556;cursor:not-allowed;}
   </style>
 </head>
 <body>
@@ -222,6 +233,10 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;}
 @keyframes laserSweep{0%,100%{left:6%;}50%{left:88%;}}
 @keyframes sparkFloat{0%{transform:translateY(0) scale(1);opacity:.9;}100%{transform:translateY(-46px) scale(.25);opacity:0;}}
 @keyframes modalScaleUp{0%{transform:scale(.94);opacity:0;}100%{transform:scale(1);opacity:1;}}
+.family-switcher-header { display: flex !important; }
+@media (max-width: 960px) {
+  .family-switcher-header { display: none !important; }
+}
 </style>
 </helmet>
 
@@ -229,8 +244,25 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;}
 
 <!-- HEADER -->
 <header style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid #e2e6ec;">
-  <!-- MOBILE DRAWER MENU OVERLAY -->
-  <div id="mobile-menu-drawer" style="position:fixed;top:64px;left:0;right:0;bottom:0;background:#fff;z-index:99;transform:translateX(100%);transition:all 0.3s ease;display:flex;flex-direction:column;padding:30px;gap:24px;border-top:1px solid #e2e6ec;">
+  <div class="family-bar">
+    <div class="family-bar-inner">
+      <span class="family-bar-label">CSCAM GROUP</span>
+      <nav class="family-bar-nav">
+        <a href="#biz-intro" class="active">3D PRINTER</a>
+        <a href="../machine/engraving/index.html">LASER TEXTURING</a>
+        <a href="../machine/marking/index.html">MARKING MACHINE</a>
+        <span class="disabled">ETC</span>
+      </nav>
+    </div>
+  </div>
+  <div id="mobile-menu-drawer" style="position:fixed;top:111px;left:0;right:0;bottom:0;background:#fff;z-index:99;transform:translateX(100%);transition:all 0.3s ease;display:flex;flex-direction:column;padding:30px;gap:24px;border-top:1px solid #e2e6ec;">
+    <!-- Family Site Switcher for Mobile Drawer -->
+    <div style="display:flex;flex-wrap:wrap;gap:6px;padding-bottom:20px;margin-bottom:10px;border-bottom:1px solid #e2e6ec;font-size:10.5px;font-weight:700;font-family:'Space Grotesk',sans-serif;">
+      <a href="#biz-intro" onclick="toggleMobileMenu()" style="padding:5px 12px;border-radius:12px;color:#fff;background:#1e5aa8;">3D PRINTER</a>
+      <a href="../machine/engraving/index.html" style="padding:5px 12px;border-radius:12px;color:#64748b;background:#f1f5f9;border:1px solid #cbd5e1;">LASER TEXTURING</a>
+      <a href="../machine/marking/index.html" style="padding:5px 12px;border-radius:12px;color:#64748b;background:#f1f5f9;border:1px solid #cbd5e1;">MARKING MACHINE</a>
+      <span style="padding:5px 12px;border-radius:12px;color:#cbd5e1;">ETC</span>
+    </div>
     <a href="#biz-intro" onclick="toggleMobileMenu()" style="font-size:18px;font-weight:700;color:#212121;">사업 소개</a>
     <a href="#slm" onclick="toggleMobileMenu()" style="font-size:18px;font-weight:700;color:#212121;">SLM 3DP</a>
     <a href="#sla" onclick="toggleMobileMenu()" style="font-size:18px;font-weight:700;color:#212121;">SLA 3DP</a>
@@ -240,7 +272,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;}
   </div>
   
   <div style="max-width:1320px;margin:0 auto;padding:0 32px;height:78px;display:flex;align-items:center;justify-content:space-between;">
-    <div style="display:flex;align-items:center;gap:14px;">
+    <div style="display:flex;align-items:center;gap:24px;">
       <div>
         <small style="display:block;font-size:10px;color:#757575;letter-spacing:.04em;margin-bottom:2px;font-weight:500;">씨에스캠주식회사</small>
         <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;font-style:italic;color:#1e5aa8;letter-spacing:.01em;">3D PRINTER</div>
@@ -271,7 +303,7 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;}
     </div>
   </div>
 </header>
-<div style="height:78px;width:100%;"></div>
+<div style="height:111px;width:100%;"></div>
 
 <!-- HERO -->
 <section id="heroSection" style="position:relative;background:#0d1e3d;color:#fff;overflow:hidden;min-height:88vh;display:flex;align-items:center;">

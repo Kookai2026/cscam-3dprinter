@@ -54,3 +54,15 @@
   --brand-hover: #00a047;    /* 액티브 및 진한 그린 */
   --hero-bg: #0b1528;        /* 다크 배경 */
 }
+
+/* 5. 기계 사업부 - 레이저 잉그레이빙(MLP) 테마 (스틸 블루)
+   - engraving 페이지가 사용하는 확장 토큰(surface/border/glow) 포함 */
+.theme-engraving {
+  --brand-main: #2a3b5c;     /* 스틸 네이비 */
+  --brand-accent: #5c7fa8;   /* 스틸 블루 (페이지 전반 rgba(92,127,168)과 일치) */
+  --brand-hover: #7d9cc4;    /* 밝은 스틸 (호버) */
+  --hero-bg: #090e17;        /* 다크 배경 */
+  --surface-card: rgba(255, 255, 255, 0.03);   /* 글래스 카드 배경 */
+  --border-card: rgba(255, 255, 255, 0.09);    /* 카드 경계선 */
+  --glow-effect: 0 8px 30px rgba(92, 127, 168, 0.28); /* 스틸 글로우 */
+}
