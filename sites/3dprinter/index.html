@@ -1718,45 +1718,17 @@ class Component extends DCLogic {
   appendInitialWelcome();
 })();
 
-// Dynamic Family Site Link Auto-Toggler
+// Family site links are deployed as separate GitHub Pages repositories.
 document.addEventListener("DOMContentLoaded", function() {
-  const path = location.pathname;
-  
-  // Find GNB family links
   const familyLinks = document.querySelectorAll(".family-bar-nav a, .drawer a");
-  
   familyLinks.forEach(link => {
     const text = link.textContent.trim().toUpperCase();
-    if (!text.includes("3D PRINTER") && !text.includes("LASER") && !text.includes("TEXTURING") && !text.includes("ENGRAVING") && !text.includes("MARKING")) {
-      return;
-    }
-    
-    const isAt3dp = path.includes("3dprinter");
-    const isAtEngraving = path.includes("engraving");
-    const isAtMarking = path.includes("marking");
-    
     if (text.includes("3D PRINTER")) {
-      if (isAt3dp) {
-        link.href = "#heroSection";
-      } else {
-        link.href = "../../3dprinter/index.html";
-      }
+      link.href = "#biz-intro";
     } else if (text.includes("LASER") || text.includes("TEXTURING") || text.includes("ENGRAVING")) {
-      if (isAtEngraving) {
-        link.href = "#hero";
-      } else if (isAt3dp) {
-        link.href = "../machine/engraving/index.html";
-      } else {
-        link.href = "../engraving/index.html";
-      }
+      link.href = "https://kookai2026.github.io/cscam-engraving/";
     } else if (text.includes("MARKING")) {
-      if (isAtMarking) {
-        link.href = "#hero";
-      } else if (isAt3dp) {
-        link.href = "../machine/marking/index.html";
-      } else {
-        link.href = "../marking/index.html";
-      }
+      link.href = "https://kookai2026.github.io/cscam-marking/";
     }
   });
 });
