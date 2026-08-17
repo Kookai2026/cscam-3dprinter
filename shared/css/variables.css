@@ -66,3 +66,14 @@
   --border-card: rgba(255, 255, 255, 0.09);    /* 카드 경계선 */
   --glow-effect: 0 8px 30px rgba(92, 127, 168, 0.28); /* 스틸 글로우 */
 }
+
+/* 6. 리니어 모터 시스템 (LMS) 테마 (일렉트릭 퍼플) */
+.theme-lms {
+  --brand-main: #8b5cf6;     /* 메인 브랜드 퍼플 */
+  --brand-accent: #a78bfa;   /* 호버 및 액센트 바이올렛 */
+  --brand-hover: #7c3aed;    /* 액티브 및 진한 퍼플 */
+  --hero-bg: #09080f;        /* 다크 퍼플 블랙 배경 */
+  --surface-card: rgba(255, 255, 255, 0.02);   /* 글래스 카드 배경 */
+  --border-card: rgba(255, 255, 255, 0.07);    /* 카드 경계선 */
+  --glow-effect: 0 8px 30px rgba(139, 92, 246, 0.22); /* 퍼플 글로우 */
+}
