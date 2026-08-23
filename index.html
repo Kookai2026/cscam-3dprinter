@@ -284,29 +284,29 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;}
       <a href="https://kookai2026.github.io/cscam-marking/" data-pending-verify="true" style="padding:5px 12px;border-radius:12px;color:#64748b;background:#f1f5f9;border:1px solid #cbd5e1;">MARKING MACHINE</a>
       <span style="padding:5px 12px;border-radius:12px;color:#cbd5e1;">ETC</span>
     </div>
-    <a href="#biz-intro" onclick="toggleMobileMenu()" data-i18n-text='{"ko":"사업 소개","en":"Business Overview"}' style="font-size:18px;font-weight:700;color:#212121;">사업 소개</a>
-    <a href="#slm" onclick="toggleMobileMenu()" data-i18n-text='{"ko":"SLM 3DP","en":"SLM 3DP"}' style="font-size:18px;font-weight:700;color:#212121;">SLM 3DP</a>
-    <a href="#sla" onclick="toggleMobileMenu()" data-i18n-text='{"ko":"SLA 3DP","en":"SLA 3DP"}' style="font-size:18px;font-weight:700;color:#212121;">SLA 3DP</a>
-    <a href="#software" onclick="toggleMobileMenu()" data-i18n-text='{"ko":"소프트웨어","en":"Software"}' style="font-size:18px;font-weight:700;color:#212121;">소프트웨어</a>
-    <a href="#customers" onclick="toggleMobileMenu()" data-i18n-text='{"ko":"주요고객","en":"Customers"}' style="font-size:18px;font-weight:700;color:#212121;">주요고객</a>
-    <a href="#contact" onclick="toggleMobileMenu()" data-i18n-text='{"ko":"문의하기","en":"Contact"}' style="font-size:18px;font-weight:700;color:#212121;">문의하기</a>
+    <a href="#biz-intro" onclick="toggleMobileMenu()" style="font-size:18px;font-weight:700;color:#212121;">{{ navBizIntro }}</a>
+    <a href="#slm" onclick="toggleMobileMenu()" style="font-size:18px;font-weight:700;color:#212121;">{{ navSlm }}</a>
+    <a href="#sla" onclick="toggleMobileMenu()" style="font-size:18px;font-weight:700;color:#212121;">{{ navSla }}</a>
+    <a href="#software" onclick="toggleMobileMenu()" style="font-size:18px;font-weight:700;color:#212121;">{{ navSoftware }}</a>
+    <a href="#customers" onclick="toggleMobileMenu()" style="font-size:18px;font-weight:700;color:#212121;">{{ navCustomers }}</a>
+    <a href="#contact" onclick="toggleMobileMenu()" style="font-size:18px;font-weight:700;color:#212121;">{{ navContact }}</a>
   </div>
   
   <div style="max-width:1320px;margin:0 auto;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;">
     <div style="display:flex;align-items:center;gap:24px;">
       <div>
-        <small data-i18n-text='{"ko":"씨에스캠주식회사","en":"CSCAM Co., Ltd."}' style="display:block;font-size:10px;color:#757575;letter-spacing:.04em;margin-bottom:2px;font-weight:500;">씨에스캠주식회사</small>
+        <small style="display:block;font-size:10px;color:#757575;letter-spacing:.04em;margin-bottom:2px;font-weight:500;">{{ brandName }}</small>
         <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;font-style:italic;color:#1e5aa8;letter-spacing:.01em;">3D PRINTER</div>
       </div>
     </div>
     <nav class="desktop-nav">
       <ul style="display:flex;gap:28px;list-style:none;">
-        <li><a href="#biz-intro" data-i18n-text='{"ko":"사업 소개","en":"Business Overview"}' style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">사업 소개</a></li>
-        <li><a href="#slm" data-i18n-text='{"ko":"SLM 3DP","en":"SLM 3DP"}' style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">SLM 3DP</a></li>
-        <li><a href="#sla" data-i18n-text='{"ko":"SLA 3DP","en":"SLA 3DP"}' style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">SLA 3DP</a></li>
-        <li><a href="#software" data-i18n-text='{"ko":"소프트웨어","en":"Software"}' style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">소프트웨어</a></li>
-        <li><a href="#customers" data-i18n-text='{"ko":"주요고객","en":"Customers"}' style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">주요고객</a></li>
-        <li><a href="#contact" data-i18n-text='{"ko":"문의하기","en":"Contact"}' style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">문의하기</a></li>
+        <li><a href="#biz-intro" style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">{{ navBizIntro }}</a></li>
+        <li><a href="#slm" style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">{{ navSlm }}</a></li>
+        <li><a href="#sla" style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">{{ navSla }}</a></li>
+        <li><a href="#software" style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">{{ navSoftware }}</a></li>
+        <li><a href="#customers" style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">{{ navCustomers }}</a></li>
+        <li><a href="#contact" style="color:#212121;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent;">{{ navContact }}</a></li>
       </ul>
     </nav>
     <!-- MOBILE HAMBURGER BUTTON -->
@@ -1370,6 +1370,14 @@ class Component extends DCLogic {
       slmFeatures, slmProducts, slaProducts, slmMatTags, slaMatTags,
       slmApps, slaApps, slmInstalls, slmStats, slaStats, swFeatures,
       slmResources, slaResources, slaInstalls, swWorkflowSteps,
+      // 내비게이션 / 정적 UI 번역
+      navBizIntro: t('사업 소개', 'Business Overview'),
+      navSlm: t('SLM 3DP', 'SLM 3DP'),
+      navSla: t('SLA 3DP', 'SLA 3DP'),
+      navSoftware: t('소프트웨어', 'Software'),
+      navCustomers: t('주요고객', 'Customers'),
+      navContact: t('문의하기', 'Contact'),
+      brandName: t('씨에스캠주식회사', 'CSCAM Co., Ltd.'),
     };
   }
 }
