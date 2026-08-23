@@ -642,77 +642,72 @@
               <img src="images/smart_marking_result_04.png" alt="스마트 마킹 결과 4">
               <figcaption>SMART MARKING RESULT 04 · QRcode 마킹 적용</figcaption>
             </figure>
-            <figure>
-              <img class="monitoring-shot" src="images/smart_monitoring_01.jpg" alt="마킹 모니터링 1">
-              <figcaption>MARKING MONITORING 01 · 현장 CCTV 기반 가동 상태 확인</figcaption>
-            </figure>
-            <figure>
-              <img class="monitoring-shot" src="images/smart_monitoring_02.jpg" alt="마킹 모니터링 2">
-              <figcaption>MARKING MONITORING 02 · 마킹룸 실시간 작업 모니터링</figcaption>
-            </figure>
-          </div>
-
-          <div id="software" class="smart-workflow">
-            <span class="eyebrow" style="color:var(--accent);">Smart Data Workflow</span>
-            <h4 class="h3" style="margin-bottom:12px;" data-i18n-text='{"ko":"씨에스캠 CAD &amp; IMD 마킹 데이터 흐름","en":"CSCAM CAD & IMD Marking Data Flow"}'>씨에스캠 CAD &amp; IMD 마킹 데이터 흐름</h4>
-            <p class="body-text copy-frame" style="text-align:center;margin-bottom:28px;" data-i18n-text='{"ko":"설계 CAD 데이터에서 추출한 마킹 정보를 IMD 서버가 변환하고, 현장 PC와 제어 PC를 거쳐 마킹 장비가 그대로 실행합니다. 수기 전사 공정을 데이터 기반 자동 마킹 흐름으로 바꾸는 핵심 구조입니다.","en":"Marking data extracted from CAD designs is converted by the IMD server, processed through site and control PCs, and directly executed by the marking machine. This is the core framework that replaces manual processes with data-driven workflows."}'>
-              설계 CAD 데이터에서 추출한 마킹 정보를 IMD 서버가 변환하고, 현장 PC와 제어 PC를 거쳐 마킹 장비가 그대로 실행합니다. 수기 전사 공정을 데이터 기반 자동 마킹 흐름으로 바꾸는 핵심 구조입니다.
-            </p>
-            <div class="smart-workflow-panel">
-              <div class="smart-workflow-grid">
-                <article class="smart-workflow-step">
-                  <img class="contain" src="images/workflow-01-cad-server.png" alt="CAD Server">
-                  <div>
-                    <span>01</span>
-                    <strong>CAD Server</strong>
-                    <p data-i18n-text='{"ko":"설계 원본에서 부재와 마킹 정보를 생성·관리합니다.","en":"Generates and manages parts and marking data from original design drawings."}'>설계 원본에서 부재와 마킹 정보를 생성·관리합니다.</p>
-                  </div>
-                </article>
-                <span class="workflow-arrow" aria-hidden="true"></span>
-                <article class="smart-workflow-step">
-                  <img src="images/workflow-02-imd-server.png" alt="IMD Server">
-                  <div>
-                    <span>02</span>
-                    <strong>IMD Server</strong>
-                    <p data-i18n-text='{"ko":"문자열 변환, 중복 회피, 대칭 부재 연산을 처리합니다.","en":"Handles string conversion, duplication avoidance, and calculation of symmetrical parts."}'>문자열 변환, 중복 회피, 대칭 부재 연산을 처리합니다.</p>
-                  </div>
-                </article>
-                <span class="workflow-arrow" aria-hidden="true"></span>
-                <article class="smart-workflow-step">
-                  <img class="contain" src="images/workflow-03-data-pc.png" alt="Data PC">
-                  <div>
-                    <span>03</span>
-                    <strong>Data PC</strong>
-                    <p data-i18n-text='{"ko":"현장 작업 순서와 마킹 진행 데이터를 관리합니다.","en":"Manages sequence of field operations and real-time marking progress data."}'>현장 작업 순서와 마킹 진행 데이터를 관리합니다.</p>
-                  </div>
-                </article>
-                <span class="workflow-arrow" aria-hidden="true"></span>
-                <article class="smart-workflow-step">
-                  <img class="contain" src="images/workflow-04-control-pc.png" alt="Control PC">
-                  <div>
-                    <span>04</span>
-                    <strong>Control PC</strong>
-                    <p data-i18n-text='{"ko":"표시 정보와 폭 검출 데이터를 장비 제어값으로 변환합니다.","en":"Converts marking details and width detection data into device control values."}'>표시 정보와 폭 검출 데이터를 장비 제어값으로 변환합니다.</p>
-                  </div>
-                </article>
-                <span class="workflow-arrow" aria-hidden="true"></span>
-                <article class="smart-workflow-step">
-                  <img src="images/marking-machine.png" alt="Marking Machine">
-                  <div>
-                    <span>05</span>
-                    <strong>Marking</strong>
-                    <p data-i18n-text='{"ko":"전송된 데이터에 따라 강재 표면에 자동 마킹을 수행합니다.","en":"Executes automatic marking on the steel surface according to the transmitted data."}'>전송된 데이터에 따라 강재 표면에 자동 마킹을 수행합니다.</p>
-                  </div>
-                </article>
-              </div>
-              <div class="workflow-conclusion">
-                <span>Core Message</span>
-                <strong data-i18n-text='{"ko":"문자마킹시스템 도입은 강재 전처리 공정을 데이터화하고, 스마트 조선소로 전환하는 시작점입니다.","en":"The implementation of the marking system digitalizes the steel pretreatment process and serves as the starting point for transitioning into a smart shipyard."}'>문자마킹시스템 도입은 강재 전처리 공정을 데이터화하고, 스마트 조선소로 전환하는 시작점입니다.</strong>
-              </div>
-            </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- SECTION 1b: SMART DATA WORKFLOW -->
+  <section id="software" class="smart-workflow">
+    <div class="container">
+      <span class="eyebrow" style="color:var(--accent); text-align: center; display: block; margin-bottom: 8px;">Smart Data Workflow</span>
+      <h3 class="h2" style="text-align: center; margin-bottom: 12px;" data-i18n-text='{"ko":"씨에스캠 CAD &amp; IMD 마킹 데이터 흐름","en":"CSCAM CAD & IMD Marking Data Flow"}'>씨에스캠 CAD &amp; IMD 마킹 데이터 흐름</h3>
+      <p class="section-sub copy-frame" style="text-align: center; max-width: 800px; margin: 0 auto 36px auto; word-break: keep-all;" data-i18n-text='{"ko":"설계 CAD 데이터에서 추출한 마킹 정보를 IMD 서버가 변환하고, 현장 PC와 제어 PC를 거쳐 마킹 장비가 그대로 실행합니다. 수기 전사 공정을 데이터 기반 자동 마킹 흐름으로 바꾸는 핵심 구조입니다.","en":"Marking data extracted from CAD designs is converted by the IMD server, processed through site and control PCs, and directly executed by the marking machine. This is the core framework that replaces manual processes with data-driven workflows."}'>
+        설계 CAD 데이터에서 추출한 마킹 정보를 IMD 서버가 변환하고, 현장 PC와 제어 PC를 거쳐 마킹 장비가 그대로 실행합니다. 수기 전사 공정을 데이터 기반 자동 마킹 흐름으로 바꾸는 핵심 구조입니다.
+      </p>
+
+      <div class="smart-workflow-panel reveal">
+        <div class="smart-workflow-grid">
+          <article class="smart-workflow-step">
+            <img class="contain" src="images/workflow-01-cad-server.png" alt="CAD Server">
+            <div>
+              <span>01</span>
+              <strong>CAD Server</strong>
+              <p data-i18n-text='{"ko":"설계 원본에서 부재와 마킹 정보를 생성·관리합니다.","en":"Generates and manages parts and marking data from original design drawings."}'>설계 원본에서 부재와 마킹 정보를 생성·관리합니다.</p>
+            </div>
+          </article>
+          <span class="workflow-arrow" aria-hidden="true"></span>
+          <article class="smart-workflow-step">
+            <img src="images/workflow-02-imd-server.png" alt="IMD Server">
+            <div>
+              <span>02</span>
+              <strong>IMD Server</strong>
+              <p data-i18n-text='{"ko":"문자열 변환, 중복 회피, 대칭 부재 연산을 처리합니다.","en":"Handles string conversion, duplication avoidance, and calculation of symmetrical parts."}'>문자열 변환, 중복 회피, 대칭 부재 연산을 처리합니다.</p>
+            </div>
+          </article>
+          <span class="workflow-arrow" aria-hidden="true"></span>
+          <article class="smart-workflow-step">
+            <img class="contain" src="images/workflow-03-data-pc.png" alt="Data PC">
+            <div>
+              <span>03</span>
+              <strong>Data PC</strong>
+              <p data-i18n-text='{"ko":"현장 작업 순서와 마킹 진행 데이터를 관리합니다.","en":"Manages sequence of field operations and real-time marking progress data."}'>현장 작업 순서와 마킹 진행 데이터를 관리합니다.</p>
+            </div>
+          </article>
+          <span class="workflow-arrow" aria-hidden="true"></span>
+          <article class="smart-workflow-step">
+            <img class="contain" src="images/workflow-04-control-pc.png" alt="Control PC">
+            <div>
+              <span>04</span>
+              <strong>Control PC</strong>
+              <p data-i18n-text='{"ko":"표시 정보와 폭 검출 데이터를 장비 제어값으로 변환합니다.","en":"Converts marking details and width detection data into device control values."}'>표시 정보와 폭 검출 데이터를 장비 제어값으로 변환합니다.</p>
+            </div>
+          </article>
+          <span class="workflow-arrow" aria-hidden="true"></span>
+          <article class="smart-workflow-step">
+            <img src="images/marking-machine.png" alt="Marking Machine" style="object-fit: cover;">
+            <div>
+              <span>05</span>
+              <strong>Marking</strong>
+              <p data-i18n-text='{"ko":"전송된 데이터에 따라 강재 표면에 자동 마킹을 수행합니다.","en":"Executes automatic marking on the steel surface according to the transmitted data."}'>전송된 데이터에 따라 강재 표면에 자동 마킹을 수행합니다.</p>
+            </div>
+          </article>
+        </div>
+        <div class="workflow-conclusion">
+          <span>Core Message</span>
+          <strong data-i18n-text='{"ko":"문자마킹시스템 도입은 강재 전처리 공정을 데이터화하고, 스마트 조선소로 전환하는 시작점입니다.","en":"The implementation of the marking system digitalizes the steel pretreatment process and serves as the starting point for transitioning into a smart shipyard."}'>문자마킹시스템 도입은 강재 전처리 공정을 데이터화하고, 스마트 조선소로 전환하는 시작점입니다.</strong>
+        </div>
       </div>
     </div>
   </section>
@@ -1151,7 +1146,7 @@
       <div class="section-head center" style="margin-bottom: 32px;">
         <span class="eyebrow">Supply Track Record</span>
         <h2 class="h2" data-i18n-text='{"ko":"국내외 주요 조선소 납품 및 가동 실적","en":""}'>국내외 주요 조선소 납품 및 가동 실적</h2>
-        <p class="section-sub copy-frame" data-i18n-text='{"ko":"지난 15년 동안 HD현대중공업, 삼성중공업, 한화오션 등 글로벌 1위 조선사들의 스마트 마킹 라인을 구축해 왔습니다.","en":"Over the past 15 years, we have built smart marking lines for the world's top shipyards, including HD Hyundai Heavy Industries, Samsung Heavy Industries, and Hanwha Ocean."}'>지난 15년 동안 HD현대중공업, 삼성중공업, 한화오션 등 글로벌 1위 조선사들의 스마트 마킹 라인을 구축해 왔습니다.</p>
+        <p class="section-sub copy-frame" data-i18n-text='{"ko":"지난 15년 동안 HD현대중공업, 삼성중공업, 한화오션 등 글로벌 1위 조선사들의 스마트 마킹 라인을 구축해 왔습니다.","en":"Over the past 15 years, we have built smart marking lines for the world&#39;s top shipyards, including HD Hyundai Heavy Industries, Samsung Heavy Industries, and Hanwha Ocean."}'>지난 15년 동안 HD현대중공업, 삼성중공업, 한화오션 등 글로벌 1위 조선사들의 스마트 마킹 라인을 구축해 왔습니다.</p>
       </div>
 
       <!-- Moving Logos Banner -->
@@ -1485,7 +1480,7 @@
         <div>
           <span class="eyebrow">Get In Touch</span>
           <h2 class="h2" style="margin-bottom:20px;" data-i18n-text='{"ko":"제품 도입 및 견적 문의","en":"Product Inquiry & Quote"}'>제품 도입 및 견적 문의</h2>
-          <p class="body-text" style="margin-bottom:30px;" data-i18n-text='{"ko":"씨에스캠의 고해상도 문자마킹장비는 선박 건조 전처리 라인의 생산 효율을 획기적으로 향상시킵니다. 장비 도입 단가, 헤드 개조 사양, 유틸리티 구축 등에 관해 영업 엔지니어가 상세히 안내해 드립니다.","en":"CSCAM's High-Resolution Marking Machine significantly boosts efficiency on shipbuilding pretreatment lines. Our sales engineers provide comprehensive assistance regarding unit pricing, print head customization, and utility infrastructure."}'>
+          <p class="body-text" style="margin-bottom:30px;" data-i18n-text='{"ko":"씨에스캠의 고해상도 문자마킹장비는 선박 건조 전처리 라인의 생산 효율을 획기적으로 향상시킵니다. 장비 도입 단가, 헤드 개조 사양, 유틸리티 구축 등에 관해 영업 엔지니어가 상세히 안내해 드립니다.","en":"CSCAM&#39;s High-Resolution Marking Machine significantly boosts efficiency on shipbuilding pretreatment lines. Our sales engineers provide comprehensive assistance regarding unit pricing, print head customization, and utility infrastructure."}'>
             씨에스캠의 고해상도 문자마킹장비는 선박 건조 전처리 라인의 생산 효율을 획기적으로 향상시킵니다. 장비 도입 단가, 헤드 개조 사양, 유틸리티 구축 등에 관해 영업 엔지니어가 상세히 안내해 드립니다.
           </p>
           <div style="font-size:15px;color:var(--text-dim);">
