@@ -210,11 +210,12 @@
     applyAutoText(document.documentElement);
   }
 
-  // React가 비동기 렌더링하므로 즉시 + 렌더 완료 후 재시도
+  // support.js 비동기 렌더링 대응: 즉시 + 단계적 재시도
   document.addEventListener('DOMContentLoaded', function () {
     applyI18n();
     setTimeout(applyI18n, 150);
     setTimeout(applyI18n, 500);
+    setTimeout(applyI18n, 1200);
     if (window.LANG === 'en') {
       new MutationObserver(function (mutations) {
         mutations.forEach(function (m) {
