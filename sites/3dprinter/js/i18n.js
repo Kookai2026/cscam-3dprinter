@@ -186,7 +186,16 @@
     document.querySelectorAll('[data-i18n-text]').forEach(function (el) {
       try {
         var tr = JSON.parse(el.getAttribute('data-i18n-text'));
-        el.textContent = tr[window.LANG] || tr['ko'];
+        var value = tr[window.LANG] || tr['ko'];
+        var leadingDecor = el.firstElementChild && !el.firstElementChild.textContent.trim()
+          ? el.firstElementChild.cloneNode(true)
+          : null;
+        el.textContent = '';
+        if (leadingDecor) el.appendChild(leadingDecor);
+        String(value).split('\n').forEach(function (part, index) {
+          if (index > 0) el.appendChild(document.createElement('br'));
+          el.appendChild(document.createTextNode(part));
+        });
       } catch (e) {}
     });
     document.querySelectorAll('.lang-btn').forEach(function (btn) {
@@ -198,7 +207,7 @@
         btn.style.fontWeight = '400';
       }
     });
-    applyAutoText(document.body);
+    applyAutoText(document.documentElement);
   }
 
   // React가 비동기 렌더링하므로 즉시 + 렌더 완료 후 재시도
@@ -213,7 +222,7 @@
             if (node.nodeType === 1) applyAutoText(node);
           });
         });
-      }).observe(document.body, { childList: true, subtree: true });
+      }).observe(document.documentElement, { childList: true, subtree: true });
     }
   });
 })();

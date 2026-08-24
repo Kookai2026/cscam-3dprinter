@@ -4,7 +4,34 @@
   window.t = function (ko, en) { return window.LANG === 'en' ? (en || ko) : ko; };
 
   var textMap = {
+    /* ── 접근성: aria-label / alt ── */
+    '메뉴 열기': 'Open Menu',
+    '메뉴 닫기': 'Close Menu',
+    '다시 재생': 'Replay',
+    '맨 위로': 'Back to top',
+    'CSCAM MLP 1000-5A 레이저 잉그레이빙 머신 외관': 'CSCAM MLP 1000-5A Laser Engraving Machine Exterior',
+    '연속파 레이저 딩플 형성 단면': 'CW Laser Dimple Formation Cross-section',
+    '펄스 레이저 딩플 형성 단면': 'Pulsed Laser Dimple Formation Cross-section',
+    '펄스 폭 스펙트럼 다이어그램: 나노·피코·팜토초': 'Pulse Width Spectrum Diagram: Nano, Pico, Femtosecond',
+    '일반 패턴 상세': 'Standard Pattern Detail',
+    '마이크로 패턴 상세': 'Micro Pattern Detail',
+    '가공 디테일 대화면': 'Machining Detail Full View',
+    '패턴가공 1': 'Pattern Machining 1',
+    '패턴가공 1-2': 'Pattern Machining 1-2',
+    '패턴가공 2': 'Pattern Machining 2',
+    '패턴가공 3': 'Pattern Machining 3',
+    '패턴가공 4': 'Pattern Machining 4',
+    '패턴가공 5': 'Pattern Machining 5',
+    'MLP 1000-5A 다중 배치 설치 전경': 'MLP 1000-5A Multiple Installation Overview',
+    'MLP 1000-5A 장비 외관': 'MLP 1000-5A Machine Exterior',
+    '5축 로터리 테이블 상세': '5-Axis Rotary Table Detail',
+    '가공 소재 클로즈업': 'Machining Material Close-up',
+    '국내 D사 실제 가동 현장 사진': 'Actual Production Site — Domestic Company D',
+    '유럽 D사 실제 가동 현장 사진': 'Actual Production Site — European Company D',
+    /* ── 본문 텍스트 ── */
     '레이저 스캐너와': 'A large-area, high-precision machining system',
+    '레이저 스캐너와 CNC 제어를 완전 결합한 5축 대면적 고정밀 마이크로 패턴 가공기 MLP 1000-5A. 타이어 사이드 몰드 각인 최적화, 단차·이음매 없는 3D 마이크로 텍스처링. — CSCAM 기계사업부': 'MLP 1000-5A is a five-axis, large-area, high-precision micro-patterning system that fully integrates laser scanner and CNC control. Optimized for tire side mold engraving and seamless 3D micro-texturing. - CSCAM Machine Division',
+    '레이저 스캐너 + CNC 결합 5축 대면적 마이크로 패턴 가공기. 타이어 몰드 각인 특화.': 'Five-axis large-area micro-patterning system combining laser scanner and CNC control. Specialized for tire mold engraving.',
     '가 결합된': 'integrating laser scanner and',
     '대면적 고정밀 가공 시스템': 'CNC control',
     '웹 브라우저가 비디오 태그를 지원하지 않습니다.': 'Your browser does not support the video tag.',
@@ -85,7 +112,7 @@
         btn.style.fontWeight = '400';
       }
     });
-    applyAutoText(document.body);
+    applyAutoText(document.documentElement);
     if (window.LANG === 'en') {
       new MutationObserver(function (mutations) {
         mutations.forEach(function (m) {
@@ -93,7 +120,7 @@
             if (node.nodeType === 1) applyAutoText(node);
           });
         });
-      }).observe(document.body, { childList: true, subtree: true });
+      }).observe(document.documentElement, { childList: true, subtree: true });
     }
   });
 })();

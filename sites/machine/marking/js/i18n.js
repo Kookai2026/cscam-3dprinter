@@ -4,7 +4,46 @@
   window.t = function (ko, en) { return window.LANG === 'en' ? (en || ko) : ko; };
 
   var textMap = {
+    /* ── 접근성: aria-label / alt ── */
+    '사업부 바로가기': 'Business Division Links',
+    '마킹 머신 페이지 메뉴': 'Marking Machine Navigation',
+    '메뉴 열기': 'Open Menu',
+    '메뉴 닫기': 'Close Menu',
+    '맨 위로': 'Back to top',
+    '기존 수작업 마킹 흐름': 'Traditional Manual Marking Workflow',
+    '현장 수작업 마킹 1': 'Manual On-site Marking 1',
+    '현장 수작업 마킹 3': 'Manual On-site Marking 3',
+    '스마트 마킹 결과 1': 'Smart Marking Result 1',
+    '스마트 마킹 결과 2': 'Smart Marking Result 2',
+    '스마트 마킹 결과 3': 'Smart Marking Result 3',
+    '스마트 마킹 결과 4': 'Smart Marking Result 4',
+    '고정식 전체마킹기 실사': 'Full Surface Marking Machine On-site Photo',
+    '전체 마킹기 현장 운용 실사': 'Full Surface Marking Machine Field Operation Photo',
+    '고정식 ID마킹기 실사': 'Stationary ID Marking Machine Photo',
+    'ID 마킹기 현장 운용 실사': 'ID Marking Machine Field Operation Photo',
+    '전체마킹기 강재 마킹 실증': 'Full Surface Marking Machine — Steel Marking Verification',
+    '야드 마킹 결과물': 'Yard Marking Output',
+    '작은 사이즈 문자 마킹 결과': 'Small Character Marking Result',
+    '잉크 마름 및 강재 적치 검증': 'Ink Drying and Steel Stacking Verification',
+    '판넬 이동형 마킹 실증 결과 1': 'Mobile Panel Marking Verification Result 1',
+    '판넬 이동형 마킹 실증 결과 2': 'Mobile Panel Marking Verification Result 2',
+    '판넬 이동형 마킹 실증 결과 3': 'Mobile Panel Marking Verification Result 3',
+    '판넬 이동형 마킹 실증 결과 4': 'Mobile Panel Marking Verification Result 4',
+    '한화오션 산동법인 구축 사례 1': 'Hanwha Ocean Shandong Installation Case 1',
+    '한화오션 산동법인 구축 사례 2': 'Hanwha Ocean Shandong Installation Case 2',
+    '한화오션 산동법인 구축 사례 3': 'Hanwha Ocean Shandong Installation Case 3',
+    '한화오션 산동법인 구축 사례 4': 'Hanwha Ocean Shandong Installation Case 4',
+    '한화오션 산동법인 구축 사례 5': 'Hanwha Ocean Shandong Installation Case 5',
+    '삼성중공업 판넬 마킹기 가동 현장': 'Samsung Heavy Industries Panel Marking Machine Operation Site',
+    '삼성중공업 고정식 문자마킹 시스템 설치': 'Samsung Heavy Industries Stationary Marking System Installation',
+    'HD현대중공업 고정식 문자마킹 시스템 설치 1': 'HD Hyundai HI Stationary Marking System Installation 1',
+    'HD현대중공업 고정식 문자마킹 시스템 설치 2': 'HD Hyundai HI Stationary Marking System Installation 2',
+    '사우디 IMI 고정식 문자마킹 시스템 설치 1': 'Saudi Aramco IMI Marking System Installation 1',
+    '사우디 IMI 고정식 문자마킹 시스템 설치 2': 'Saudi Aramco IMI Marking System Installation 2',
+    /* ── 본문 텍스트 ── */
     'CSCAM - 문자마킹시스템': 'CSCAM - Marking System',
+    '조선 전처리 라인을 위한 피에조 방식 고해상도 문자마킹 시스템 및 대면적 이동식 판넬 마킹 시스템. 국내 주요 조선사 최다 구축 실적으로 검증된 신뢰성.': 'Piezo-based high-resolution character marking systems and large-area mobile panel marking systems for shipbuilding pretreatment lines, proven by major shipyard installations.',
+    '피에조 방식 고해상도 고정식 마킹 및 대면적 갠트리 이동식 판넬 마킹 시스템.': 'Piezo-based high-resolution stationary marking and large-area gantry mobile panel marking systems.',
     '조선소 전처리': 'Shipyard Pretreatment',
     '아직도 수작업으로': 'Still marking',
     '강재 데이터를 마킹하고 있으신가요?': 'steel data by hand?',
@@ -153,7 +192,7 @@
         btn.style.fontWeight = '400';
       }
     });
-    applyAutoText(document.body);
+    applyAutoText(document.documentElement);
     if (window.LANG === 'en') {
       new MutationObserver(function (mutations) {
         mutations.forEach(function (m) {
@@ -161,7 +200,7 @@
             if (node.nodeType === 1) applyAutoText(node);
           });
         });
-      }).observe(document.body, { childList: true, subtree: true });
+      }).observe(document.documentElement, { childList: true, subtree: true });
     }
   });
 })();
