@@ -46,7 +46,7 @@
     '에 적합.': 'applications.',
     '가공 효율과 정밀도의 균형점. 열 영향을 대폭 억제하면서 정밀한 표면 질감 구현 및': 'Balances processing efficiency and precision. It greatly suppresses thermal effects while enabling precise surface texture and',
     '에 적용.': 'applications.',
-    "열 전달 시간보다 짧은 초단펄스로 'Cold Ablation' 구현. 열 왜곡 및 Burr가 전혀 없는": 'Implements cold ablation with ultrashort pulses shorter than the heat-transfer time, producing',
+    '열 전달 시간보다 짧은 초단펄스로 "Cold Ablation" 구현. 열 왜곡 및 Burr가 전혀 없는': 'Implements cold ablation with ultrashort pulses shorter than the heat-transfer time, producing',
     '완성.': 'with no thermal distortion or burrs.',
     'CSCAM의 제어 시스템은 나노초(Nano) 및 펨토초(Femto) 펄스 폭 조절을 모두 지원하며, 본 장비(MLP 1000-5A)는': 'CSCAM control systems support both nanosecond and femtosecond pulse-width control, and the MLP 1000-5A precisely synchronizes',
     '와 5축 로터리 제어를 하드웨어 레이어에서 정밀히 정합하여 열영향부(HAZ) 왜곡이 거의 없는 완벽한 에지를 도출해 냅니다.': 'with 5-axis rotary control at the hardware layer to produce clean edges with minimal HAZ distortion.',
